@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import ProjectPage from "./components/ProjectPage";
 import ResumePage from "./components/ResumePage";
 import SkillsPage from "./components/SkillsPage";
+import ResumeComponentList from "./components/ResumeComponentList";
+import ResumeList from "./components/ResumeList";
 
 const router = createBrowserRouter([
   {
@@ -15,13 +17,23 @@ const router = createBrowserRouter([
     element: <Navbar />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/heading", element: <HeadingPage /> },
-      { path: "/education", element: <EducationPage /> },
-      { path: "/experience", element: <ExperiencePage /> },
-      { path: "/project", element: <ProjectPage /> },
-      { path: "/skills", element: <SkillsPage /> },
-      { path: "/certifications", element: <CertificationsPage /> },
-      { path: "/resume", element: <ResumePage /> },
+      {
+        path: "create",
+        element: <ResumeComponentList />,
+        children: [
+          { path: "heading", element: <HeadingPage /> },
+          { path: "education", element: <EducationPage /> },
+          { path: "experience", element: <ExperiencePage /> },
+          { path: "project", element: <ProjectPage /> },
+          { path: "skills", element: <SkillsPage /> },
+          { path: "certifications", element: <CertificationsPage /> },
+          { path: "resume", element: <ResumePage /> },
+        ],
+      },
+      {
+        path: "edit",
+        element: <ResumeList />,
+      },
     ],
   },
 ]);

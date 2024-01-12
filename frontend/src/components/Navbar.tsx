@@ -5,13 +5,8 @@ const Navbar = () => {
   return (
     <Box>
       <HStack spacing={5}>
-        <Link to="/heading">Heading</Link>
-        <Link to="/education">Education</Link>
-        <Link to="/experience">Experience</Link>
-        <Link to="/project">Projects</Link>
-        <Link to="/skills">Skills</Link>
-        <Link to="/certifications">Certifications</Link>
-        <Link to="/resume">Resume</Link>
+        <Link to="/create">Create New Resume</Link>
+        <Link to="/edit">Use Existing Resume</Link>
       </HStack>
       <Outlet />
     </Box>
