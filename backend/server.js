@@ -1,12 +1,10 @@
 const express = require("express");
 const resumeRoutes = require("./routes/resumes");
 require("dotenv").config();
+const mongoose = require("mongoose");
 
 // Setting up the server
 const app = express();
-app.listen(4000, () => {
-  console.log("Server is running on port", process.env.PORT);
-});
 
 // middleware
 app.use(express.json());
@@ -18,3 +16,13 @@ app.use((req, res, next) => {
 
 // Setting up the Routes
 app.use("/api/resume", resumeRoutes);
+
+// Connecting to the Database
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(4000, () => {
+      console.log("Server is running on port", process.env.PORT);
+    });
+  })
+  .catch((err) => console.log(err));
