@@ -1,8 +1,14 @@
-import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  SimpleGrid,
+} from "@chakra-ui/react";
 
 const HeadingPage = () => {
   return (
-    <Box margin={2}>
+    <SimpleGrid gap={5}>
       <FormControl isRequired>
         <FormLabel>Full Name</FormLabel>
         <Input type="name" placeholder="Full name" />
@@ -12,10 +18,12 @@ const HeadingPage = () => {
         <Input type="phone-number" placeholder="Phone No." />
         <FormLabel>LinkdIn URL</FormLabel>
         <Input type="linkedin-url" placeholder="LinkdIn Url" />
-        <Button type="submit">Submit</Button>
+        <Button marginTop={3} type="submit">
+          Submit
+        </Button>
       </FormControl>
       <Button>Import from another Resume</Button>
-    </Box>
+    </SimpleGrid>
   );
 };
 

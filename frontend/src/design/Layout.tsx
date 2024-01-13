@@ -1,13 +1,17 @@
-import { Box } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const Layout = () => {
   return (
-    <Box>
-      <Navbar />
-      <Outlet />
-    </Box>
+    <Grid gap={3} templateAreas={`" header" "main"`}>
+      <GridItem area={"header"}>
+        <Navbar />
+      </GridItem>
+      <GridItem area={"main"}>
+        <Outlet />
+      </GridItem>
+    </Grid>
   );
 };
 
