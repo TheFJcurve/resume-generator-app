@@ -1,15 +1,21 @@
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+
 const HeadingPage = () => {
   return (
-    <form action="heading">
-      <label htmlFor="name">Your Name: </label>
-      <input type="text" />
-      <label htmlFor="email">Email: </label>
-      <input type="text" />
-      <label htmlFor="number">Phone Number: </label>
-      <input type="number" />
-      <label htmlFor="linkedin">Your LinkedIn: </label>
-      <input type="text" />
-    </form>
+    <Box margin={2}>
+      <FormControl isRequired>
+        <FormLabel>Full Name</FormLabel>
+        <Input type="name" placeholder="Full name" />
+        <FormLabel>Email</FormLabel>
+        <Input type="email" placeholder="Email" />
+        <FormLabel>Phone Number</FormLabel>
+        <Input type="phone-number" placeholder="Phone No." />
+        <FormLabel>LinkdIn URL</FormLabel>
+        <Input type="linkedin-url" placeholder="LinkdIn Url" />
+        <Button type="submit">Submit</Button>
+      </FormControl>
+      <Button>Import from another Resume</Button>
+    </Box>
   );
 };
 

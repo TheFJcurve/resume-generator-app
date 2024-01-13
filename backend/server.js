@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 // Setting up the Routes
-app.use("/api/resume", resumeRoutes);
+app.use("/api/resumes", resumeRoutes);
 
 // Connecting to the Database
 mongoose

@@ -4,17 +4,17 @@ import EducationPage from "./components/EducationPage";
 import ErrorPage from "./components/ErrorPage";
 import ExperiencePage from "./components/ExperiencePage";
 import HeadingPage from "./components/HeadingPage";
-import Navbar from "./components/Navbar";
 import ProjectPage from "./components/ProjectPage";
-import ResumePage from "./components/ResumePage";
-import SkillsPage from "./components/SkillsPage";
 import ResumeComponentList from "./components/ResumeComponentList";
 import ResumeList from "./components/ResumeList";
+import ResumePage from "./components/ResumePage";
+import SkillsPage from "./components/SkillsPage";
+import Layout from "./design/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navbar />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {

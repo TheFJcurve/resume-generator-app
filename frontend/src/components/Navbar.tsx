@@ -1,5 +1,5 @@
 import { Box, HStack } from "@chakra-ui/react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,7 +8,6 @@ const Navbar = () => {
         <Link to="/create">Create New Resume</Link>
         <Link to="/edit">Use Existing Resume</Link>
       </HStack>
-      <Outlet />
     </Box>
   );
 };
