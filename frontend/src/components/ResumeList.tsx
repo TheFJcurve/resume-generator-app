@@ -1,7 +1,6 @@
 import { SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ResumeCard from "./ResumeCard";
-import { set } from "date-fns";
 
 export interface Resume {
   _id: string;
