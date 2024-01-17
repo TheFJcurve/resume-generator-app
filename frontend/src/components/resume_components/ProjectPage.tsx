@@ -9,29 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
-interface ProjectPage {
-  projectName: string;
-  projectLink: string;
-  additionalLink?: string;
-  projectDescription: string;
-}
-
 const ProjectPage = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const projectData: ProjectPage = {
-      projectName: data.get("projectName") as string,
-      projectLink: data.get("projectLink") as string,
-      additionalLink: data.get("additionalLink") as string,
-      projectDescription: data.get("projectDescription") as string,
-    };
-    console.log(projectData);
-  };
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <FormControl isRequired>
           <FormLabel>Project Name</FormLabel>
           <Input name="projectName" placeholder="Resume Generator App" />

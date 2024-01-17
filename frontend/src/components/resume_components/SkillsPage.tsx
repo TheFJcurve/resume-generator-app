@@ -9,26 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
-interface SkillsPage {
-  skillHeading: string;
-  skills: string;
-}
-
 const SkillsPage = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const skillsData: SkillsPage = {
-      skillHeading: data.get("skillHeading") as string,
-      skills: data.get("skills") as string,
-    };
-    console.log(skillsData);
-  };
-
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <FormControl>
           <FormLabel>Skill Heading</FormLabel>
           <Input name="skillHeading" placeholder="Programming" />

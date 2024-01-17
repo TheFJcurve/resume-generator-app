@@ -7,32 +7,11 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
-interface HeadingPage {
-  name: string;
-  email: string;
-  phone: string;
-  website?: string;
-  linkedin?: string;
-}
-
 const HeadingPage = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const headingData: HeadingPage = {
-      name: data.get("name") as string,
-      email: data.get("email") as string,
-      phone: data.get("phoneNumber") as string,
-      website: data.get("websiteUrl") as string,
-      linkedin: data.get("linkedinUrl") as string,
-    };
-    console.log(headingData);
-  };
-
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <FormControl isRequired>
           <FormLabel>Full Name</FormLabel>
           <Input name="name" placeholder="Full name" />

@@ -8,32 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
-interface EducationPage {
-  institute: string;
-  degree: string;
-  location?: string;
-  graduationDate?: string;
-  relevantCourses?: string;
-}
-
 const EducationPage = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const educationData: EducationPage = {
-      institute: data.get("institute") as string,
-      degree: data.get("degree") as string,
-      location: data.get("location") as string,
-      graduationDate: data.get("graduationDate") as string,
-      relevantCourses: data.get("relevantCourses") as string,
-    };
-    console.log(educationData);
-  };
-
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <FormControl isRequired>
           <FormLabel>Education</FormLabel>
           <Input name="institute" placeholder="The University of Waterloo" />

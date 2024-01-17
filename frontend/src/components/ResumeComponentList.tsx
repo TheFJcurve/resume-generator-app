@@ -51,11 +51,6 @@ const ResumeComponentList = () => {
                 <Link to="./certifications">Certifications</Link>
               </Td>
             </Tr>
-            <Tr>
-              <Td>
-                <Link to="./resume">Resume</Link>
-              </Td>
-            </Tr>
           </Tbody>
         </Table>
       </TableContainer>

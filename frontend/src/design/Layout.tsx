@@ -4,7 +4,11 @@ import Navbar from "../components/Navbar";
 
 const Layout = () => {
   return (
-    <Grid gap={3} templateAreas={`" header" "main"`}>
+    <Grid
+      gap={3}
+      templateAreas={`" header" "main"`}
+      width={"1080px"}
+    >
       <GridItem area={"header"}>
         <Navbar />
       </GridItem>

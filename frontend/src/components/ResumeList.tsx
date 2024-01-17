@@ -1,19 +1,7 @@
 import { SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ResumeCard from "./ResumeCard";
-
-export interface Resume {
-  _id: string;
-  heading: string;
-  education: string;
-  experience: string;
-  projects: string;
-  skills: string;
-  certifications: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
+import { Resume } from "../hooks/useResumes";
 
 const ResumeList = () => {
   const [resumes, setResumes] = useState<Resume[]>([]);

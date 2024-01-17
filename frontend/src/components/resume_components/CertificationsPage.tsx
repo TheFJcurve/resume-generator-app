@@ -8,26 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
-interface CertificationsPage {
-  certificate: string;
-  description: string;
-}
-
 const CertificationsPage = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const certificationsData: CertificationsPage = {
-      certificate: data.get("certificate") as string,
-      description: data.get("description") as string,
-    };
-    console.log(certificationsData);
-  };
-
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <FormControl>
           <FormLabel>Certification Name</FormLabel>
           <Input

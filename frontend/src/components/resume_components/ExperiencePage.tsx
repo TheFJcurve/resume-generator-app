@@ -9,34 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
-interface ExperiencePage {
-  company: string;
-  position: string;
-  location?: string;
-  startDate: string;
-  endDate?: string;
-  description: string;
-}
-
 const ExperiencePage = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const experienceData: ExperiencePage = {
-      company: data.get("company") as string,
-      position: data.get("position") as string,
-      location: data.get("location") as string,
-      startDate: data.get("startDate") as string,
-      endDate: data.get("endDate") as string,
-      description: data.get("description") as string,
-    };
-    console.log(experienceData);
-  };
-
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <FormControl isRequired>
           <FormLabel>Company Name</FormLabel>
           <Input name="company" placeholder="Sweat Free Apparel" />
