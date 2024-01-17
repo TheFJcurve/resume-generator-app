@@ -1,6 +1,15 @@
-import { Card, CardBody, CardFooter, Divider, Image } from "@chakra-ui/react";
-import { Resume } from "../services/resumeService";
+import { DeleteIcon } from "@chakra-ui/icons";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Divider,
+  HStack,
+  IconButton,
+  Image,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { Resume } from "../services/resumeService";
 
 interface Props {
   resume: Resume;
@@ -23,7 +32,15 @@ const ResumeCard = ({ resume }: Props) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <Link to={resume._id}>{resume.name}</Link>
+        <HStack>
+          <Link to={resume._id ? resume._id : "."}>{resume.name}</Link>
+          <IconButton
+            alignContent={"end"}
+            aria-label="delete"
+            icon={<DeleteIcon />}
+            colorScheme="red"
+          />
+        </HStack>
       </CardFooter>
     </Card>
   );

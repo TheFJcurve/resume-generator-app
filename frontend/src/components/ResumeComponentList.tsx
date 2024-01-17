@@ -4,8 +4,6 @@ import {
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
-  Th,
   Tr,
 } from "@chakra-ui/react";
 import { Link, Outlet } from "react-router-dom";
@@ -52,11 +50,6 @@ const ResumeComponentList = () => {
               </Td>
             </Tr>
           </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th>Resume Components</Th>
-            </Tr>
-          </Tfoot>
         </Table>
       </TableContainer>
       <Outlet />

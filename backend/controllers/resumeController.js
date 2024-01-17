@@ -36,8 +36,8 @@ const createResume = async (req, res) => {
     certifications,
   } = req.body;
 
-  if (!heading) {
-    return res.status(400).send({ error: "Please fill the heading field" });
+  if (!name) {
+    return res.status(400).send({ error: "Please fill the name field" });
   }
 
   try {

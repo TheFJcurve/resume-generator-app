@@ -124,7 +124,7 @@ const resumeSchema = new Schema(
     },
     heading: {
       type: headerSchema,
-      required: true,
+      required: false,
     },
     education: {
       type: [educationSchema],

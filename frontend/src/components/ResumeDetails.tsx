@@ -145,7 +145,8 @@ const ResumeDetails = () => {
       ) : null}
 
       <Heading size={"md"}>
-        Created : {formatDistanceToNow(new Date(resume.createdAt))}
+        Created :{" "}
+        {formatDistanceToNow(new Date(resume.createdAt ? resume.createdAt : 0))}
       </Heading>
     </SimpleGrid>
   );
