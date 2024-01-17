@@ -9,6 +9,7 @@ import ResumeComponentList from "./components/ResumeComponentList";
 import ResumeList from "./components/ResumeList";
 import SkillsPage from "./components/resume_components/SkillsPage";
 import Layout from "./design/Layout";
+import ResumeDetails from "./components/ResumeDetails";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +26,15 @@ const router = createBrowserRouter([
           { path: "experience", element: <ExperiencePage /> },
           { path: "project", element: <ProjectPage /> },
           { path: "skills", element: <SkillsPage /> },
-          { path: "certifications", element: <CertificationsPage /> }
+          { path: "certifications", element: <CertificationsPage /> },
         ],
       },
       {
         path: "edit",
-        element: <ResumeList />,
+        children: [
+          { path: "", element: <ResumeList /> },
+          { path: ":id", element: <ResumeDetails /> },
+        ],
       },
     ],
   },

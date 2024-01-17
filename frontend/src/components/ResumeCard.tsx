@@ -1,15 +1,6 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  CardHeader,
-  Heading,
-  Stack,
-  StackDivider,
-  Text,
-} from "@chakra-ui/react";
-import { formatDistanceToNow } from "date-fns";
-import { Resume } from "./ResumeList";
+import { Card, CardBody, CardFooter, Divider, Image } from "@chakra-ui/react";
+import { Resume } from "../services/resumeService";
+import { Link } from "react-router-dom";
 
 interface Props {
   resume: Resume;
@@ -17,64 +8,17 @@ interface Props {
 const ResumeCard = ({ resume }: Props) => {
   return (
     <Card>
-      <CardHeader>
-        <Heading size="md">{resume.heading}</Heading>
-      </CardHeader>
-
       <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Education
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {resume.education}
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Experience
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {resume.experience}
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Projects
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {resume.projects}
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Skills
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {resume.skills}
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Certifications
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {resume.certifications}
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Created At
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {formatDistanceToNow(new Date(resume.createdAt), {
-                addSuffix: true,
-              })}
-            </Text>
-          </Box>
-        </Stack>
+        <Image
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          alt="Green double couch with wooden legs"
+          borderRadius="lg"
+        />
       </CardBody>
+      <Divider />
+      <CardFooter>
+        <Link to={resume._id}>{resume.heading.fullName}</Link>
+      </CardFooter>
     </Card>
   );
 };
