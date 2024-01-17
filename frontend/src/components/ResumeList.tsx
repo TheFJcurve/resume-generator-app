@@ -8,7 +8,7 @@ const ResumeList = () => {
   if (error) throw error;
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={3}>
+    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={6} gap={4}>
       {data &&
         data.map((resume) => <ResumeCard key={resume._id} resume={resume} />)}
     </SimpleGrid>

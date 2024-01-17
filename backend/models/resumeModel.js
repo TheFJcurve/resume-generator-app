@@ -118,6 +118,10 @@ const certificationSchema = new Schema({
 
 const resumeSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     heading: {
       type: headerSchema,
       required: true,

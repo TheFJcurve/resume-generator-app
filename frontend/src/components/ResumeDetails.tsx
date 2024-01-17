@@ -18,6 +18,7 @@ const ResumeDetails = () => {
       <Box padding={1}>
         <Heading>Resume Details</Heading>
         <p>Resume ID: {resume._id}</p>
+        <p>Name: {resume.name}</p>
         <Divider />
       </Box>
 

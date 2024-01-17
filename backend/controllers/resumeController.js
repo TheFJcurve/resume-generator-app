@@ -26,8 +26,15 @@ const getResume = async (req, res) => {
 
 // create a Resume
 const createResume = async (req, res) => {
-  const { heading, education, experience, projects, skills, certifications } =
-    req.body;
+  const {
+    name,
+    heading,
+    education,
+    experience,
+    projects,
+    skills,
+    certifications,
+  } = req.body;
 
   if (!heading) {
     return res.status(400).send({ error: "Please fill the heading field" });
@@ -35,6 +42,7 @@ const createResume = async (req, res) => {
 
   try {
     const resume = await Resume.create({
+      name,
       heading,
       education,
       experience,

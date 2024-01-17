@@ -4,8 +4,8 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Tfoot,
   Th,
-  Thead,
   Tr,
 } from "@chakra-ui/react";
 import { Link, Outlet } from "react-router-dom";
@@ -15,12 +15,12 @@ const ResumeComponentList = () => {
     <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={10}>
       <TableContainer>
         <Table variant="simple">
-          <Thead>
-            <Tr>
-              <Th>Resume Components</Th>
-            </Tr>
-          </Thead>
           <Tbody>
+            <Tr>
+              <Td>
+                <Link to="./name">Resume Name</Link>
+              </Td>
+            </Tr>
             <Tr>
               <Td>
                 <Link to="./heading">Heading</Link>
@@ -52,6 +52,11 @@ const ResumeComponentList = () => {
               </Td>
             </Tr>
           </Tbody>
+          <Tfoot>
+            <Tr>
+              <Th>Resume Components</Th>
+            </Tr>
+          </Tfoot>
         </Table>
       </TableContainer>
       <Outlet />

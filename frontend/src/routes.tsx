@@ -10,6 +10,7 @@ import ResumeList from "./components/ResumeList";
 import SkillsPage from "./components/resume_components/SkillsPage";
 import Layout from "./design/Layout";
 import ResumeDetails from "./components/ResumeDetails";
+import ResumeName from "./components/resume_components/ResumeName";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
         path: "create",
         element: <ResumeComponentList />,
         children: [
+          { path: "", element: <ResumeName /> },
+          { path: "name", element: <ResumeName /> },
           { path: "heading", element: <HeadingPage /> },
           { path: "education", element: <EducationPage /> },
           { path: "experience", element: <ExperiencePage /> },
