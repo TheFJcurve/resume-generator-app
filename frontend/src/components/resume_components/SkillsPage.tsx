@@ -22,7 +22,7 @@ const SkillsPage = () => {
         skills: data.get("skills") as string,
       },
     ];
-    dispatch({ type: "UPDATE_RESUME", field: "skill", value: newSkill });
+    dispatch({ type: "UPDATE_RESUME", field: "skills", value: newSkill });
   };
 
   return (

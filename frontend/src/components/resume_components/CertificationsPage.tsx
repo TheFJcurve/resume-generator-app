@@ -23,7 +23,7 @@ const CertificationsPage = () => {
     ];
     dispatch({
       type: "UPDATE_RESUME",
-      field: "certification",
+      field: "certifications",
       value: newCertification,
     });
   };

@@ -27,7 +27,7 @@ const ProjectPage = () => {
 
     dispatch({
       type: "UPDATE_RESUME",
-      field: "project",
+      field: "projects",
       value: newProject,
     });
   };

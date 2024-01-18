@@ -21,7 +21,6 @@ const ResumeComponentList = () => {
     console.log(resume);
   };
 
-  console.log(resume);
   return (
     <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} margin={3} gap={10}>
       <ResumeName />
