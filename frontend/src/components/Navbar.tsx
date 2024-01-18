@@ -1,9 +1,9 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <Box padding={5} alignContent={"center"}>
+    <HStack padding={5}>
       <Link to="/create">
         <Button
           borderRadius={10}
@@ -25,7 +25,7 @@ const Navbar = () => {
           Use Existing Resume
         </Button>
       </Link>
-    </Box>
+    </HStack>
   );
 };
 

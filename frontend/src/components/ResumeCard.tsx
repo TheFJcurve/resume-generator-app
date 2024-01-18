@@ -9,6 +9,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import useResumeRemove from "../hooks/useResumeDelete";
 import { Resume } from "../services/resumeService";
 
 interface Props {
@@ -35,6 +36,7 @@ const ResumeCard = ({ resume }: Props) => {
         <HStack>
           <Link to={resume._id ? resume._id : "."}>{resume.name}</Link>
           <IconButton
+            onClick={() => useResumeRemove({ id: resume._id })}
             alignContent={"end"}
             aria-label="delete"
             icon={<DeleteIcon />}

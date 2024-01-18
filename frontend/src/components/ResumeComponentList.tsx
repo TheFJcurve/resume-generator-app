@@ -1,58 +1,23 @@
-import {
-  SimpleGrid,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Tr,
-} from "@chakra-ui/react";
-import { Link, Outlet } from "react-router-dom";
+import { Button, SimpleGrid } from "@chakra-ui/react";
+import CertificationsPage from "./resume_components/CertificationsPage";
+import EducationPage from "./resume_components/EducationPage";
+import ExperiencePage from "./resume_components/ExperiencePage";
+import HeadingPage from "./resume_components/HeadingPage";
+import ProjectPage from "./resume_components/ProjectPage";
+import ResumeName from "./resume_components/ResumeName";
+import SkillsPage from "./resume_components/SkillsPage";
 
 const ResumeComponentList = () => {
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={10}>
-      <TableContainer>
-        <Table variant="simple">
-          <Tbody>
-            <Tr>
-              <Td>
-                <Link to="./name">Resume Name</Link>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>
-                <Link to="./heading">Heading</Link>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>
-                <Link to="./education">Education</Link>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>
-                <Link to="./experience">Experience</Link>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>
-                <Link to="./project">Projects</Link>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>
-                <Link to="./skills">Skills</Link>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>
-                <Link to="./certifications">Certifications</Link>
-              </Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
-      <Outlet />
+    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} margin={3} gap={10}>
+      <ResumeName />
+      <HeadingPage />
+      <EducationPage />
+      <ExperiencePage />
+      <ProjectPage />
+      <SkillsPage />
+      <CertificationsPage />
+      <Button type="submit">Make</Button>
     </SimpleGrid>
   );
 };

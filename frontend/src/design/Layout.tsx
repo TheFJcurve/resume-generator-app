@@ -1,13 +1,13 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const Layout = () => {
   return (
-    <Grid
+    <SimpleGrid
+      columns={{ sm: 1, md: 2 }}
       gap={3}
-      templateAreas={`" header" "main"`}
-      width={"1080px"}
+      templateAreas={`"header header" "main main"`}
     >
       <GridItem area={"header"}>
         <Navbar />
@@ -15,7 +15,7 @@ const Layout = () => {
       <GridItem area={"main"}>
         <Outlet />
       </GridItem>
-    </Grid>
+    </SimpleGrid>
   );
 };
 

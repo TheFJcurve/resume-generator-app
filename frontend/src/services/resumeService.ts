@@ -43,7 +43,7 @@ interface CertificationsPage {
 }
 
 export interface Resume {
-    _id?: string;
+    _id: string;
     name: string;
     heading?: HeadingPage;
     education?: EducationPage[];
@@ -51,9 +51,9 @@ export interface Resume {
     projects?: ProjectPage[];
     skills?: SkillsPage[];
     certifications?: CertificationsPage[];
-    createdAt?: Date;
-    updatedAt?: Date;
-} 
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 const resumeService = new APIClient<Resume>("/api/resumes");
 

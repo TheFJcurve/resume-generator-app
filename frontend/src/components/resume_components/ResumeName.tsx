@@ -1,7 +1,6 @@
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { Form } from "react-router-dom";
-import resumeService from "../../services/resumeService";
 
 const ResumeName = () => {
   const [resumeName, setResumeName] = useState("");
@@ -10,11 +9,11 @@ const ResumeName = () => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const newName = {
-      resumeName: data.get("resumeName") as string,
+      name: data.get("name") as string,
     };
-    setResumeName(newName.resumeName);
+    setResumeName(newName.name);
 
-    resumeService.create({ name: resumeName });
+    console.log(resumeName);
   };
 
   return (
@@ -22,7 +21,7 @@ const ResumeName = () => {
       <FormControl isRequired>
         <FormLabel>Resume Name</FormLabel>
         <Input
-          name="resumeName"
+          name="name"
           type="text"
           placeholder="Software Developer Resume"
         />
