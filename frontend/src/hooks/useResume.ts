@@ -1,10 +1,15 @@
-import { useQuery } from '@tanstack/react-query'
-import resumeService, { Resume } from '../services/resumeService'
+import { useContext } from "react";
+import { ResumeContext } from "../context/ResumeContext";
 
-const useResume = (id: string) => useQuery<Resume, Error>({
-    queryKey: ['resume', id],
-    queryFn: () => resumeService.getOne(id),
-    staleTime: 1000 * 60 * 5, // 5 minutes
-})
+// Define a custom hook to access the context value
+const useResume = () => {
+    const context = useContext(ResumeContext);
 
-export default useResume
+    if (!context) {
+        throw new Error("useResume must be used within a ResumeProvider");
+    }
+
+    return context;
+};
+
+export default useResume;

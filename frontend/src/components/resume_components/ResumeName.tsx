@@ -1,9 +1,9 @@
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { useState } from "react";
 import { Form } from "react-router-dom";
+import { useResume } from "../../context/ResumeContext";
 
 const ResumeName = () => {
-  const [resumeName, setResumeName] = useState("");
+  const { dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -11,9 +11,8 @@ const ResumeName = () => {
     const newName = {
       name: data.get("name") as string,
     };
-    setResumeName(newName.name);
 
-    console.log(resumeName);
+    dispatch({ type: "UPDATE_RESUME", field: "name", value: newName.name });
   };
 
   return (

@@ -6,12 +6,29 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
+import { useResume } from "../../context/ResumeContext";
 
 const HeadingPage = () => {
+  const { dispatch } = useResume();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+    const heading = {
+      fullName: data.get("name") as string,
+      email: data.get("email") as string,
+      phone: data.get("phoneNumber") as string,
+      websiteUrl: data.get("websiteUrl") as string,
+      linkedinUrl: data.get("linkedinUrl") as string,
+    };
+
+    dispatch({ type: "UPDATE_RESUME", field: "heading", value: heading });
+  };
+
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Full Name</FormLabel>
           <Input name="name" placeholder="Full name" />

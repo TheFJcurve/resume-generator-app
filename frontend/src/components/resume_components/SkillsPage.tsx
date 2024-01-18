@@ -8,12 +8,27 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
+import { useResume } from "../../context/ResumeContext";
 
 const SkillsPage = () => {
+  const { dispatch } = useResume();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const newSkill = [
+      {
+        skillHeading: data.get("skillHeading") as string,
+        skills: data.get("skills") as string,
+      },
+    ];
+    dispatch({ type: "UPDATE_RESUME", field: "skill", value: newSkill });
+  };
+
   return (
     <SimpleGrid gap={2}>
       <Button>Import from another Resume</Button>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel>Skill Heading</FormLabel>
           <Input name="skillHeading" placeholder="Programming" />

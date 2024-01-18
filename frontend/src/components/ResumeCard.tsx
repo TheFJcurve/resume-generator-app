@@ -9,7 +9,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import useResumeRemove from "../hooks/useResumeDelete";
+import useResumeRemove from "../hooks/deleteResumes";
 import { Resume } from "../services/resumeService";
 
 interface Props {

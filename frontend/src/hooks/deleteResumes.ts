@@ -4,9 +4,9 @@ interface Props {
     id: string
 }
 
-const useResumeRemove = ({id}: Props) => {
+const deleteResume = ({id}: Props) => {
     resumeService.delete(id);
     console.log("deleted")
 }
 
-export default useResumeRemove
+export default deleteResume

@@ -1,6 +1,6 @@
 import APIClient from "./apiClient";
 
-interface HeadingPage {
+export interface HeadingPage {
     fullName: string;
     email: string;
     phone: string;
@@ -8,7 +8,7 @@ interface HeadingPage {
     linkedin?: string;
 }
 
-interface EducationPage {
+export interface EducationPage {
     institute: string;
     degree: string;
     location?: string;
@@ -16,7 +16,7 @@ interface EducationPage {
     relevantCourses?: string;
 }
 
-interface ExperiencePage {
+export interface ExperiencePage {
     company: string;
     position: string;
     location?: string;
@@ -25,19 +25,19 @@ interface ExperiencePage {
     description: string;
 }
 
-interface ProjectPage {
+export interface ProjectPage {
     projectName: string;
     projectLink: string;
     additionalLink?: string;
     projectDescription: string;
 }
 
-interface SkillsPage {
+export interface SkillsPage {
     skillHeading: string;
     skills: string;
 }
 
-interface CertificationsPage {
+export interface CertificationsPage {
     certificate: string;
     description?: string;
 }

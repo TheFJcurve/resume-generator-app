@@ -1,6 +1,6 @@
 import { Box, Divider, Heading, SimpleGrid } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import useResume from "../hooks/useResume";
+import useResume from "../hooks/getResume";
 import { formatDistanceToNow } from "date-fns";
 
 const ResumeDetails = () => {

@@ -1,5 +1,5 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import useResumes from "../hooks/useResumes";
+import useResumes from "../hooks/getResumes";
 import ResumeCard from "./ResumeCard";
 
 const ResumeList = () => {
