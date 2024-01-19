@@ -6,7 +6,7 @@ import {
   SimpleGrid,
   VStack,
 } from "@chakra-ui/react";
-import sampleresume from "../../public/sample-resume.png";
+import sampleresume from "../assets/sample-resume.png";
 import { Link } from "react-router-dom";
 
 const Home = () => {
