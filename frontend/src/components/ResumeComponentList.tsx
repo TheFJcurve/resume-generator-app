@@ -1,10 +1,4 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Button,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Button, SimpleGrid } from "@chakra-ui/react";
 import CertificationsPage from "./resume_components/CertificationsPage";
 import EducationPage from "./resume_components/EducationPage";
 import ExperiencePage from "./resume_components/ExperiencePage";
@@ -12,7 +6,7 @@ import HeadingPage from "./resume_components/HeadingPage";
 import ProjectPage from "./resume_components/ProjectPage";
 import ResumeName from "./resume_components/ResumeName";
 import SkillsPage from "./resume_components/SkillsPage";
-import { useResume } from "../context/ResumeContext";
+import useResume from "../hooks/useResume";
 
 const ResumeComponentList = () => {
   const { resume } = useResume();

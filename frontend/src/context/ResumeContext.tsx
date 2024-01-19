@@ -1,5 +1,5 @@
 // ResumeContext.tsx
-import React, { createContext, useContext, ReactNode, useReducer } from "react";
+import React, { ReactNode, createContext, useReducer } from "react";
 import {
   CertificationsPage,
   EducationPage,
@@ -58,20 +58,12 @@ export const ResumeContext = createContext<ResumeContextType | undefined>(
   undefined
 );
 
-export const useResume = () => {
-  const context = useContext(ResumeContext);
-  if (!context) {
-    throw new Error("useResume must be used within a ResumeProvider");
-  }
-  return context;
-};
-
 interface Props {
   children: ReactNode;
   initialValue?: ResumeType;
 }
 
-export const ResumeProvider = ({ children, initialValue }: Props) => {
+export const ResumeContextProvider = ({ children, initialValue }: Props) => {
   const [resume, dispatch] = useReducer(resumeReducer, initialValue);
 
   const contextValue = {

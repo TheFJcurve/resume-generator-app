@@ -7,7 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./routes.tsx";
 import theme from "./theme.ts";
-import { ResumeProvider } from "./context/ResumeContext.tsx";
+import { ResumeContextProvider } from "./context/ResumeContext.tsx";
 
 const defaultResume = {
   name: "",
@@ -29,9 +29,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <ResumeProvider initialValue={defaultResume}>
+        <ResumeContextProvider initialValue={defaultResume}>
           <RouterProvider router={router} />
-        </ResumeProvider>
+        </ResumeContextProvider>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </ChakraProvider>

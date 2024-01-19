@@ -8,7 +8,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
-import { useResume } from "../../context/ResumeContext";
+import useResume from "../../hooks/useResume";
 
 const SkillsPage = () => {
   const { dispatch } = useResume();
