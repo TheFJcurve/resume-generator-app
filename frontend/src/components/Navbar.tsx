@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <HStack padding={5}>
-      <Link to="/create">
+      <Link to="./create">
         <Button
           borderRadius={10}
           margin={2}
@@ -15,7 +15,7 @@ const Navbar = () => {
         </Button>
       </Link>
 
-      <Link to="/edit">
+      <Link to="./edit">
         <Button
           borderRadius={10}
           margin={2}

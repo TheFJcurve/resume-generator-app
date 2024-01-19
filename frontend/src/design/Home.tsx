@@ -13,6 +13,7 @@ const Home = () => {
   return (
     <SimpleGrid columns={{ sm: 1, md: 2 }}>
       <VStack
+        gap={3}
         style={{
           display: "flex",
           alignContent: "center",
