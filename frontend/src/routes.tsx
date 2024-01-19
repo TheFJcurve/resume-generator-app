@@ -11,10 +11,15 @@ import SkillsPage from "./components/resumeComponents/SkillsPage";
 import Layout from "./design/Layout";
 import ResumeDetails from "./components/ResumeDetails";
 import ResumeName from "./components/resumeComponents/ResumeName";
+import Home from "./design/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/resume",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
