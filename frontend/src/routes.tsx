@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import CertificationsPage from "./components/resume_components/CertificationsPage";
-import EducationPage from "./components/resume_components/EducationPage";
+import CertificationsPage from "./components/resumeComponents/CertificationsPage";
+import EducationPage from "./components/resumeComponents/EducationPage";
 import ErrorPage from "./components/ErrorPage";
-import ExperiencePage from "./components/resume_components/ExperiencePage";
-import HeadingPage from "./components/resume_components/HeadingPage";
-import ProjectPage from "./components/resume_components/ProjectPage";
+import ExperiencePage from "./components/resumeComponents/ExperiencePage";
+import HeadingPage from "./components/resumeComponents/HeadingPage";
+import ProjectPage from "./components/resumeComponents/ProjectPage";
 import ResumeComponentList from "./components/ResumeComponentList";
 import ResumeList from "./components/ResumeList";
-import SkillsPage from "./components/resume_components/SkillsPage";
+import SkillsPage from "./components/resumeComponents/SkillsPage";
 import Layout from "./design/Layout";
 import ResumeDetails from "./components/ResumeDetails";
-import ResumeName from "./components/resume_components/ResumeName";
+import ResumeName from "./components/resumeComponents/ResumeName";
 
 const router = createBrowserRouter([
   {

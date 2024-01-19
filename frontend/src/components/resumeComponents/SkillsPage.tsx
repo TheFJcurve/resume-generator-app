@@ -1,6 +1,7 @@
 import {
   Button,
   FormControl,
+  FormHelperText,
   FormLabel,
   Input,
   SimpleGrid,
@@ -9,23 +10,19 @@ import {
 import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
-const CertificationsPage = () => {
+const SkillsPage = () => {
   const { dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const newCertification = [
+    const newSkill = [
       {
-        certificate: data.get("certificate") as string,
-        description: data.get("description") as string,
+        skillHeading: data.get("skillHeading") as string,
+        skill: data.get("skills") as string,
       },
     ];
-    dispatch({
-      type: "UPDATE_RESUME",
-      field: "certifications",
-      value: newCertification,
-    });
+    dispatch({ type: "UPDATE_RESUME", field: "skills", value: newSkill });
   };
 
   return (
@@ -33,18 +30,13 @@ const CertificationsPage = () => {
       <Button>Import from another Resume</Button>
       <Form onSubmit={handleSubmit}>
         <FormControl>
-          <FormLabel>Certification Name</FormLabel>
-          <Input
-            name="certificate"
-            placeholder="Cognizant Virtual Experience Program"
-          />
+          <FormLabel>Skill Heading</FormLabel>
+          <Input name="skillHeading" placeholder="Programming" />
         </FormControl>
         <FormControl>
-          <FormLabel>Certification Description</FormLabel>
-          <Textarea
-            name="description"
-            placeholder="Learnt Machine Learning on Edx"
-          />
+          <FormLabel>Skills</FormLabel>
+          <Textarea name="skills" placeholder="C++, Java, Python" />
+          <FormHelperText>Seperated by ',' </FormHelperText>
         </FormControl>
         <Button marginTop={3} type="submit">
           Save
@@ -54,4 +46,4 @@ const CertificationsPage = () => {
   );
 };
 
-export default CertificationsPage;
+export default SkillsPage;

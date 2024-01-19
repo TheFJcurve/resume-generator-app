@@ -1,12 +1,7 @@
-import { Button, SimpleGrid } from "@chakra-ui/react";
+import { Button, SimpleGrid, Table, TableContainer } from "@chakra-ui/react";
+import { Outlet } from "react-router-dom";
 import useResume from "../hooks/useResume";
-import CertificationsPage from "./resume_components/CertificationsPage";
-import EducationPage from "./resume_components/EducationPage";
-import ExperiencePage from "./resume_components/ExperiencePage";
-import HeadingPage from "./resume_components/HeadingPage";
-import ProjectPage from "./resume_components/ProjectPage";
-import ResumeName from "./resume_components/ResumeName";
-import SkillsPage from "./resume_components/SkillsPage";
+import LinkTableItem from "./LinkTableItem";
 
 const ResumeComponentList = () => {
   const { resume, dispatch } = useResume();
@@ -38,17 +33,22 @@ const ResumeComponentList = () => {
   };
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} margin={3} gap={10}>
-      <ResumeName />
-      <HeadingPage />
-      <EducationPage />
-      <ExperiencePage />
-      <ProjectPage />
-      <SkillsPage />
-      <CertificationsPage />
-      <Button onClick={postResume} type="submit">
-        Make
-      </Button>
+    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={10}>
+      <TableContainer>
+        <Table variant="simple">
+          <LinkTableItem link="./name">Resume Name</LinkTableItem>
+          <LinkTableItem link="./heading">Heading</LinkTableItem>
+          <LinkTableItem link="./education">Education</LinkTableItem>
+          <LinkTableItem link="./experience">Experience</LinkTableItem>
+          <LinkTableItem link="./project">Project</LinkTableItem>
+          <LinkTableItem link="./skills">Skills</LinkTableItem>
+          <LinkTableItem link="./certifications">Certifications</LinkTableItem>
+        </Table>
+        <Button marginTop={3} onClick={postResume} type="submit">
+          Make
+        </Button>
+      </TableContainer>
+      <Outlet />
     </SimpleGrid>
   );
 };

@@ -1,7 +1,6 @@
 import {
   Button,
   FormControl,
-  FormHelperText,
   FormLabel,
   Input,
   SimpleGrid,
@@ -10,19 +9,23 @@ import {
 import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
-const SkillsPage = () => {
+const CertificationsPage = () => {
   const { dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const newSkill = [
+    const newCertification = [
       {
-        skillHeading: data.get("skillHeading") as string,
-        skills: data.get("skills") as string,
+        name: data.get("certificate") as string,
+        description: data.get("description") as string,
       },
     ];
-    dispatch({ type: "UPDATE_RESUME", field: "skills", value: newSkill });
+    dispatch({
+      type: "UPDATE_RESUME",
+      field: "certifications",
+      value: newCertification,
+    });
   };
 
   return (
@@ -30,13 +33,18 @@ const SkillsPage = () => {
       <Button>Import from another Resume</Button>
       <Form onSubmit={handleSubmit}>
         <FormControl>
-          <FormLabel>Skill Heading</FormLabel>
-          <Input name="skillHeading" placeholder="Programming" />
+          <FormLabel>Certification Name</FormLabel>
+          <Input
+            name="certificate"
+            placeholder="Cognizant Virtual Experience Program"
+          />
         </FormControl>
         <FormControl>
-          <FormLabel>Skills</FormLabel>
-          <Textarea name="skills" placeholder="C++, Java, Python" />
-          <FormHelperText>Seperated by ',' </FormHelperText>
+          <FormLabel>Certification Description</FormLabel>
+          <Textarea
+            name="description"
+            placeholder="Learnt Machine Learning on Edx"
+          />
         </FormControl>
         <Button marginTop={3} type="submit">
           Save
@@ -46,4 +54,4 @@ const SkillsPage = () => {
   );
 };
 
-export default SkillsPage;
+export default CertificationsPage;

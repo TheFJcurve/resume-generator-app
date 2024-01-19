@@ -48,7 +48,7 @@ const ResumeDetails = () => {
         <>
           <Heading size={"md"}>Education</Heading>
           {resume.education?.map((e) => (
-            <Box padding={1}>
+            <Box key={e.institute} padding={1}>
               <SimpleGrid columns={2} gap={3}>
                 <p>Institute: {e.institute}</p>
 
@@ -73,7 +73,7 @@ const ResumeDetails = () => {
           <Heading size={"md"}>Experience</Heading>
 
           {resume.experience?.map((e) => (
-            <Box padding={1}>
+            <Box key={e.company} padding={1}>
               <SimpleGrid columns={2} gap={3}>
                 <p>Company: {e.company}</p>
 
@@ -97,7 +97,7 @@ const ResumeDetails = () => {
         <>
           <Heading size={"md"}>Projects</Heading>
           {resume.projects?.map((e) => (
-            <Box padding={1}>
+            <Box key={e.projectName} padding={1}>
               <SimpleGrid columns={2} gap={3}>
                 <p>Project Name: {e.projectName}</p>
 
@@ -115,12 +115,12 @@ const ResumeDetails = () => {
 
       {resume.skills?.length ? (
         <>
-          <Heading size={"md"}>Heading</Heading>
+          <Heading size={"md"}>Skills</Heading>
           {resume.skills?.map((e) => (
-            <Box padding={1}>
+            <Box key={e.skillHeading} padding={1}>
               <SimpleGrid columns={2} gap={3}>
                 <p>
-                  {e.skillHeading}: {e.skills}
+                  {e.skillHeading}: {e.skill}
                 </p>
               </SimpleGrid>
               <Divider />
@@ -131,11 +131,11 @@ const ResumeDetails = () => {
 
       {resume.certifications?.length ? (
         <>
-          <Heading size={"md"}>Heading</Heading>
+          <Heading size={"md"}>Certifications</Heading>
           {resume.certifications?.map((e) => (
-            <Box padding={1}>
+            <Box key={e.name} padding={1}>
               <SimpleGrid columns={2} gap={3}>
-                <p>Certificate Name: {e.certificate}</p>
+                <p>Certificate Name: {e.name}</p>
                 <p>Certificate Description: {e.description}</p>
               </SimpleGrid>
               <Divider />

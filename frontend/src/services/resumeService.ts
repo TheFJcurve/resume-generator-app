@@ -34,11 +34,11 @@ export interface ProjectPage {
 
 export interface SkillsPage {
     skillHeading: string;
-    skills: string;
+    skill: string;
 }
 
 export interface CertificationsPage {
-    certificate: string;
+    name: string;
     description?: string;
 }
 
