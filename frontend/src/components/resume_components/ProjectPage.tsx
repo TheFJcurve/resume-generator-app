@@ -21,7 +21,7 @@ const ProjectPage = () => {
         projectName: data.get("projectName") as string,
         projectLink: data.get("projectLink") as string,
         additionalLink: data.get("additionalLink") as string,
-        projectDescription: data.get("projectDescription") as string,
+        description: data.get("projectDescription") as string,
       },
     ];
 

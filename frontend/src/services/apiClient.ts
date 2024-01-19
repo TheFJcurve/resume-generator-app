@@ -13,16 +13,6 @@ class APIClient<T> {
         return fetch(`${this.endpoint}/${id}`).then((res) => res.json());
     }
 
-    create = (newObj: T) => {
-        return fetch(this.endpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newObj),
-        }).then((res) => res.json());
-    }
-
     delete = (id: string) => {
         return fetch(`${this.endpoint}/${id}`, {
             method: "DELETE",
