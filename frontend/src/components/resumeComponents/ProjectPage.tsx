@@ -12,7 +12,7 @@ import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
 const ProjectPage = () => {
-  const { dispatch } = useResume();
+  const { resume, dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const ProjectPage = () => {
         projectName: data.get("projectName") as string,
         projectLink: data.get("projectLink") as string,
         additionalLink: data.get("additionalLink") as string,
-        description: data.get("projectDescription") as string,
+        description: data.get("description") as string,
       },
     ];
 
@@ -40,21 +40,38 @@ const ProjectPage = () => {
       <Form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Project Name</FormLabel>
-          <Input name="projectName" placeholder="Resume Generator App" />
+          <Input
+            name="projectName"
+            placeholder="Resume Generator App"
+            defaultValue={resume?.projects.map((e) => e.projectName)}
+          />
         </FormControl>
         <FormControl isRequired>
           <FormLabel>Project Link</FormLabel>
-          <Input name="projectLink" placeholder="https://www.google.com" />
+          <Input
+            name="projectLink"
+            placeholder="https://www.google.com"
+            defaultValue={resume?.projects.map((e) => e.projectLink)}
+          />
         </FormControl>
         <FormControl>
           <FormLabel>Any Additional Link</FormLabel>
-          <Input name="additionalLink" placeholder="https://www.google.com" />
+          <Input
+            name="additionalLink"
+            placeholder="https://www.google.com"
+            defaultValue={resume?.projects.map((e) =>
+              e.additionalLink ? e.additionalLink : ""
+            )}
+          />
         </FormControl>
         <FormControl>
           <FormLabel>Project Description</FormLabel>
           <Textarea
-            name="projectDescription"
+            name="description"
             placeholder="Description of the Project"
+            defaultValue={resume?.projects.map((e) =>
+              e.description ? e.description : ""
+            )}
           />
           <FormHelperText>Seperated by ',' </FormHelperText>
         </FormControl>

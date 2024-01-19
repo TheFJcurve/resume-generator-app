@@ -11,7 +11,7 @@ import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
 const CertificationsPage = () => {
-  const { dispatch } = useResume();
+  const { resume, dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,6 +39,7 @@ const CertificationsPage = () => {
           <Input
             name="certificate"
             placeholder="Cognizant Virtual Experience Program"
+            defaultValue={resume?.certifications.map((e) => e.name)}
           />
         </FormControl>
         <FormControl>
@@ -46,6 +47,9 @@ const CertificationsPage = () => {
           <Textarea
             name="description"
             placeholder="Learnt Machine Learning on Edx"
+            defaultValue={resume?.certifications.map((e) =>
+              e.description ? e.description : ""
+            )}
           />
         </FormControl>
         <Button marginTop={3} type="submit">

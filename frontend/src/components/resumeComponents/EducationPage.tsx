@@ -11,7 +11,7 @@ import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
 const EducationPage = () => {
-  const { dispatch } = useResume();
+  const { resume, dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,28 +40,48 @@ const EducationPage = () => {
       <Form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Education</FormLabel>
-          <Input name="institute" placeholder="The University of Waterloo" />
+          <Input
+            name="institute"
+            placeholder="The University of Waterloo"
+            defaultValue={resume?.education.map((e) => e.institute)}
+          />
         </FormControl>
         <FormControl isRequired>
           <FormLabel>Degree or Major</FormLabel>
           <Input
             name="degree"
             placeholder="Computer Science with Statistics Minor"
+            defaultValue={resume?.education.map((e) => e.degree)}
           />
         </FormControl>
         <FormControl>
           <FormLabel>Location</FormLabel>
-          <Input name="location" placeholder="Waterloo, ON, Canada" />
+          <Input
+            name="location"
+            placeholder="Waterloo, ON, Canada"
+            defaultValue={resume?.education.map((e) =>
+              e.location ? e.location : ""
+            )}
+          />
         </FormControl>
         <FormControl>
           <FormLabel>Graduation Date</FormLabel>
-          <Input name="graduationDate" placeholder="April 2027" />
+          <Input
+            name="graduationDate"
+            placeholder="April 2027"
+            defaultValue={resume?.education.map((e) =>
+              e.graduationDate ? e.graduationDate : ""
+            )}
+          />
         </FormControl>
         <FormControl>
           <FormLabel>Relevant Courses</FormLabel>
           <Input
             name="relevantCourses"
             placeholder="Object Oriented Programming"
+            defaultValue={resume?.education.map((e) =>
+              e.relevantCourses ? e.relevantCourses : ""
+            )}
           />
           <FormHelperText>Seperated by ',' </FormHelperText>
         </FormControl>

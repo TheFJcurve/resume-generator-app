@@ -12,7 +12,7 @@ import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
 const SkillsPage = () => {
-  const { dispatch } = useResume();
+  const { resume, dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,11 +33,21 @@ const SkillsPage = () => {
       <Form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel>Skill Heading</FormLabel>
-          <Input name="skillHeading" placeholder="Programming" />
+          <Input
+            name="skillHeading"
+            placeholder="Programming"
+            defaultValue={resume?.skills.map((e) =>
+              e.skillHeading ? e.skillHeading : ""
+            )}
+          />
         </FormControl>
         <FormControl>
           <FormLabel>Skills</FormLabel>
-          <Textarea name="skills" placeholder="C++, Java, Python" />
+          <Textarea
+            name="skills"
+            placeholder="C++, Java, Python"
+            defaultValue={resume?.skills.map((e) => (e.skill ? e.skill : ""))}
+          />
           <FormHelperText>Seperated by ',' </FormHelperText>
         </FormControl>
         <Button marginTop={3} type="submit">

@@ -32,12 +32,12 @@ const ResumeDetails = () => {
 
             <p>Phone Number: {resume.heading.phone}</p>
 
-            {resume.heading.website && (
-              <p>Personal Website: {resume.heading.website}</p>
+            {resume.heading.personalWebsite && (
+              <p>Personal Website: {resume.heading.personalWebsite}</p>
             )}
 
-            {resume.heading.linkedin && (
-              <p>LinkdIn Url: {resume.heading.linkedin}</p>
+            {resume.heading.linkedinUrl && (
+              <p>LinkdIn Url: {resume.heading.linkedinUrl}</p>
             )}
           </SimpleGrid>
           <Divider />
@@ -105,7 +105,7 @@ const ResumeDetails = () => {
 
                 {e.additionalLink && <p>Additional Link: {e.additionalLink}</p>}
 
-                <p>Project Description: {e.projectDescription}</p>
+                <p>Project Description: {e.description}</p>
               </SimpleGrid>
               <Divider />
             </Box>
@@ -146,7 +146,10 @@ const ResumeDetails = () => {
 
       <Heading size={"md"}>
         Created :{" "}
-        {formatDistanceToNow(new Date(resume.createdAt ? resume.createdAt : 0))}
+        {formatDistanceToNow(
+          new Date(resume.createdAt ? resume.createdAt : 0),
+          { addSuffix: true }
+        )}
       </Heading>
     </SimpleGrid>
   );

@@ -10,7 +10,7 @@ import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
 const ResumeName = () => {
-  const { dispatch } = useResume();
+  const { resume, dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +32,7 @@ const ResumeName = () => {
             name="name"
             type="text"
             placeholder="Software Developer Resume"
+            defaultValue={resume?.name}
           />
           <Button marginTop={3} type="submit">
             Save

@@ -12,7 +12,7 @@ import { Form } from "react-router-dom";
 import useResume from "../../hooks/useResume";
 
 const ExperiencePage = () => {
-  const { dispatch } = useResume();
+  const { resume, dispatch } = useResume();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,18 +43,29 @@ const ExperiencePage = () => {
       <Form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Company Name</FormLabel>
-          <Input name="company" placeholder="Sweat Free Apparel" />
+          <Input
+            name="company"
+            placeholder="Sweat Free Apparel"
+            defaultValue={resume?.experience.map((e) => e.company)}
+          />
         </FormControl>
         <FormControl isRequired>
           <FormLabel>Position</FormLabel>
           <Input
             name="position"
             placeholder="Machine Learning and Mobile Developer co-op"
+            defaultValue={resume?.experience.map((e) => e.position)}
           />
         </FormControl>
         <FormControl>
           <FormLabel>Location</FormLabel>
-          <Input name="location" placeholder="Waterloo, ON, Canada" />
+          <Input
+            name="location"
+            placeholder="Waterloo, ON, Canada"
+            defaultValue={resume?.experience.map((e) =>
+              e.location ? e.location : ""
+            )}
+          />
         </FormControl>
         <FormControl isRequired>
           <FormLabel>Start Date</FormLabel>
@@ -62,6 +73,7 @@ const ExperiencePage = () => {
             name="startDate"
             type="date"
             placeholder="May 2023 - August 2023"
+            defaultValue={resume?.experience.map((e) => e.startDate)}
           />
         </FormControl>
         <FormControl>
@@ -70,6 +82,9 @@ const ExperiencePage = () => {
             name="endDate"
             type="date"
             placeholder="May 2023 - August 2023"
+            defaultValue={resume?.experience.map((e) =>
+              e.endDate ? e.endDate : ""
+            )}
           />
         </FormControl>
         <FormControl isRequired>
@@ -77,6 +92,7 @@ const ExperiencePage = () => {
           <Textarea
             name="description"
             placeholder="Description of the Job or Experience"
+            defaultValue={resume?.experience.map((e) => e.description)}
           />
           <FormHelperText>Seperated by ',' </FormHelperText>
         </FormControl>

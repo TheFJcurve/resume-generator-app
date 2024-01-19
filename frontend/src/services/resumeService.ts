@@ -4,8 +4,8 @@ export interface HeadingPage {
     fullName: string;
     email: string;
     phone: string;
-    website?: string;
-    linkedin?: string;
+    personalWebsite?: string;
+    linkedinUrl?: string;
 }
 
 export interface EducationPage {
@@ -29,7 +29,7 @@ export interface ProjectPage {
     projectName: string;
     projectLink: string;
     additionalLink?: string;
-    projectDescription: string;
+    description: string;
 }
 
 export interface SkillsPage {
