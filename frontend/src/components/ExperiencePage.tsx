@@ -72,8 +72,6 @@ const ExperiencePage = () => {
     setInputFields(data);
   };
 
-  console.log(inputFields);
-
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Experience</Heading>
