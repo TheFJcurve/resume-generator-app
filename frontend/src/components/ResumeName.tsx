@@ -7,7 +7,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
-import useResume from "../../hooks/useResume";
+import useResume from "../hooks/useResume";
 
 const ResumeName = () => {
   const { resume, dispatch } = useResume();

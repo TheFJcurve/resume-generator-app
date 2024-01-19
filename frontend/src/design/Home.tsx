@@ -11,7 +11,13 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }}>
+    <SimpleGrid
+      columns={{ sm: 1, md: 2 }}
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <VStack
         gap={3}
         style={{
