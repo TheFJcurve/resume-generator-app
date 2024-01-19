@@ -30,7 +30,7 @@ const HeadingPage = () => {
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Heading</Heading>
-      <Button>Import from another Resume</Button>
+      <Button colorScheme="teal">Import from another Resume</Button>
       <Form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Full Name</FormLabel>
@@ -72,7 +72,7 @@ const HeadingPage = () => {
             defaultValue={resume?.heading.linkedinUrl}
           />
         </FormControl>
-        <Button marginTop={3} type="submit">
+        <Button colorScheme="teal" marginTop={3} type="submit">
           Save
         </Button>
       </Form>

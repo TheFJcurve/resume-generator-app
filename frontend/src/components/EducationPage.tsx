@@ -69,9 +69,6 @@ const EducationPage = () => {
     setInputFields(data);
   };
 
-  console.log(inputFields);
-  console.log(resume?.education);
-
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Education</Heading>

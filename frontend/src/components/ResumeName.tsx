@@ -34,7 +34,7 @@ const ResumeName = () => {
             placeholder="Software Developer Resume"
             defaultValue={resume?.name}
           />
-          <Button marginTop={3} type="submit">
+          <Button colorScheme="teal" marginTop={3} type="submit">
             Save
           </Button>
         </FormControl>
