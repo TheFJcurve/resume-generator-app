@@ -1,31 +1,21 @@
-import { Button, HStack } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   return (
-    <HStack padding={5}>
-      <Link to="./create">
-        <Button
-          borderRadius={10}
-          margin={2}
-          borderColor={"red.600"}
-          marginRight={4}
-        >
-          Create New Resume
-        </Button>
-      </Link>
-
-      <Link to="./edit">
-        <Button
-          borderRadius={10}
-          margin={2}
-          borderColor={"green.600"}
-          marginRight={4}
-        >
-          Use Existing Resume
-        </Button>
-      </Link>
-    </HStack>
+    <Link to={"/"}>
+      <Image
+        style={{
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "40%",
+        }}
+        width={"300px"}
+        src={logo}
+      />
+    </Link>
   );
 };
 

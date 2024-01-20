@@ -88,6 +88,7 @@ const ProjectPage = () => {
                 />
               </HStack>
               <Input
+                marginTop={3}
                 name={`projectName${index}`}
                 placeholder="Resume Generator App"
                 defaultValue={input.projectName}

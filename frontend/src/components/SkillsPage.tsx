@@ -1,58 +1,112 @@
 import {
+  Box,
   Button,
   FormControl,
   FormHelperText,
   FormLabel,
+  HStack,
   Heading,
+  IconButton,
   Input,
   SimpleGrid,
   Textarea,
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 const SkillsPage = () => {
   const { resume, dispatch } = useResume();
+  const defaultField = [
+    {
+      skillHeading: "",
+      skill: "",
+    },
+  ];
+
+  const [inputFields, setInputFields] = useState(
+    resume
+      ? resume.skills?.length === 0
+        ? defaultField
+        : resume?.skills
+      : defaultField
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const newSkill = [
-      {
-        skillHeading: data.get("skillHeading") as string,
-        skill: data.get("skills") as string,
-      },
-    ];
+
+    const newSkill = Array.from({ length: inputFields.length }, (_, index) => ({
+      skillHeading: data.get(`skillHeading${index}`) as string,
+      skill: data.get(`skill${index}`) as string,
+    }));
+
     dispatch({ type: "UPDATE_RESUME", field: "skills", value: newSkill });
+
+    setInputFields(newSkill);
+  };
+
+  const addField = () => {
+    setInputFields([...inputFields, defaultField[0]]);
+  };
+
+  const removeField = (index: number) => {
+    let data = [...inputFields];
+    data.splice(index, 1);
+    setInputFields(data);
   };
 
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Skills</Heading>
-      <Button>Import from another Resume</Button>
+      <Button colorScheme="teal">Import from another Resume</Button>
       <Form onSubmit={handleSubmit}>
-        <FormControl>
-          <FormLabel>Skill Heading</FormLabel>
-          <Input
-            name="skillHeading"
-            placeholder="Programming"
-            defaultValue={resume?.skills.map((e) =>
-              e.skillHeading ? e.skillHeading : ""
-            )}
+        {inputFields?.map((input, index) => (
+          <Box key={index}>
+            <FormControl>
+              <HStack>
+                <FormLabel>Skill Heading {index + 1}</FormLabel>
+                <IconButton
+                  style={{ marginLeft: "auto" }}
+                  onClick={() => removeField(index)}
+                  colorScheme="red"
+                  marginTop={3}
+                  icon={<DeleteIcon />}
+                  aria-label="remove"
+                />
+              </HStack>
+              <Input
+                marginTop={3}
+                name={`skillHeading${index}`}
+                placeholder="Programming"
+                defaultValue={input.skillHeading ? input.skillHeading : ""}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Skills</FormLabel>
+              <Textarea
+                name={`skill${index}`}
+                placeholder="C++, Java, Python"
+                defaultValue={input.skill ? input.skill : ""}
+              />
+              <FormHelperText>Seperated by ',' </FormHelperText>
+            </FormControl>
+          </Box>
+        ))}
+        <HStack>
+          <Button colorScheme="teal" marginTop={3} type="submit">
+            Save
+          </Button>
+          <IconButton
+            style={{ marginLeft: "auto" }}
+            onClick={addField}
+            colorScheme="blue"
+            marginTop={3}
+            icon={<AddIcon />}
+            aria-label="add"
           />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Skills</FormLabel>
-          <Textarea
-            name="skills"
-            placeholder="C++, Java, Python"
-            defaultValue={resume?.skills.map((e) => (e.skill ? e.skill : ""))}
-          />
-          <FormHelperText>Seperated by ',' </FormHelperText>
-        </FormControl>
-        <Button marginTop={3} type="submit">
-          Save
-        </Button>
+        </HStack>
       </Form>
     </SimpleGrid>
   );

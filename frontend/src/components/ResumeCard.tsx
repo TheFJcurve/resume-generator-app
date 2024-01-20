@@ -16,6 +16,11 @@ interface Props {
   resume: Resume;
 }
 const ResumeCard = ({ resume }: Props) => {
+  const onDelete = (id: string) => {
+    useResumeRemove({ id: id });
+    window.location.reload();
+  };
+
   return (
     <Card
       _hover={{
@@ -36,7 +41,7 @@ const ResumeCard = ({ resume }: Props) => {
         <HStack>
           <Link to={resume._id ? resume._id : "."}>{resume.name}</Link>
           <IconButton
-            onClick={() => useResumeRemove({ id: resume._id })}
+            onClick={() => onDelete(resume._id ? resume._id : ".")}
             alignContent={"end"}
             aria-label="delete"
             icon={<DeleteIcon />}

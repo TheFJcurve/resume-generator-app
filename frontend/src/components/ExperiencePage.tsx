@@ -93,6 +93,7 @@ const ExperiencePage = () => {
                   />
                 </HStack>
                 <Input
+                  marginTop={3}
                   name={`company${index}`}
                   placeholder="Sweat Free Apparel"
                   defaultValue={input.company}
@@ -126,7 +127,7 @@ const ExperiencePage = () => {
               <FormControl>
                 <FormLabel>End Date</FormLabel>
                 <Input
-                  name={`endDate${input}`}
+                  name={`endDate${index}`}
                   type="date"
                   placeholder="May 2023 - August 2023"
                   defaultValue={input.endDate ? input.endDate : ""}
