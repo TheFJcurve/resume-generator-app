@@ -33,7 +33,15 @@ const ResumeComponentList = () => {
   };
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={10}>
+    <SimpleGrid
+      style={{
+        display: "flex",
+        width: "100%",
+      }}
+      columns={{ sm: 1, md: 2 }}
+      margin={3}
+      gap={10}
+    >
       <TableContainer>
         <Table variant="simple">
           <LinkTableItem link="./name">Resume Name</LinkTableItem>
@@ -44,7 +52,13 @@ const ResumeComponentList = () => {
           <LinkTableItem link="./skills">Skills</LinkTableItem>
           <LinkTableItem link="./certifications">Certifications</LinkTableItem>
         </Table>
-        <Button marginTop={3} onClick={postResume} type="submit">
+        <Button
+          colorScheme="teal"
+          marginTop={3}
+          width={"100%"}
+          onClick={postResume}
+          type="submit"
+        >
           Make
         </Button>
       </TableContainer>
