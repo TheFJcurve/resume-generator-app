@@ -22,13 +22,7 @@ const ResumeCard = ({ resume }: Props) => {
   };
 
   return (
-    <Card
-      _hover={{
-        transform: "scale(1.03)",
-        transition: "transform 0.15s ease-in",
-      }}
-      borderRadius={10}
-    >
+    <Card>
       <CardBody>
         <Image
           src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
