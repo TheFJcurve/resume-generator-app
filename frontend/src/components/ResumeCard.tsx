@@ -11,39 +11,19 @@ import {
   IconButton,
   Image,
 } from "@chakra-ui/react";
+import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
 import useResumeRemove from "../hooks/deleteResumes";
 import { Resume } from "../services/resumeService";
-import useResume from "../hooks/useResume";
-import { formatDistanceToNow } from "date-fns";
 
 interface Props {
   resume: Resume;
+  fetchAndUse: (resume: Resume) => void;
 }
-const ResumeCard = ({ resume }: Props) => {
-  const { dispatch } = useResume();
-
+const ResumeCard = ({ resume, fetchAndUse }: Props) => {
   const onDelete = (id: string) => {
     useResumeRemove({ id: id });
     window.location.reload();
-  };
-
-  const fetchAndUse = () => {
-    console.log(resume);
-    dispatch({
-      type: "SET_RESUME",
-      payload: {
-        name: resume.name,
-        heading: resume.heading
-          ? resume.heading
-          : { fullName: "", email: "", phone: "" },
-        education: resume.education ? resume.education : [],
-        experience: resume.experience ? resume.experience : [],
-        projects: resume.projects ? resume.projects : [],
-        skills: resume.skills ? resume.skills : [],
-        certifications: resume.certifications ? resume.certifications : [],
-      },
-    });
   };
 
   return (
@@ -60,7 +40,7 @@ const ResumeCard = ({ resume }: Props) => {
           </Link>
           <Box>
             <Link to={"/resume/create"}>
-              <Button colorScheme="teal" onClick={fetchAndUse}>
+              <Button colorScheme="teal" onClick={() => fetchAndUse(resume)}>
                 Use
               </Button>
             </Link>
