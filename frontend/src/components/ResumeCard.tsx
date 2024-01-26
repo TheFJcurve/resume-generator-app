@@ -4,6 +4,8 @@ import {
   Button,
   Card,
   CardBody,
+  CardFooter,
+  Divider,
   HStack,
   Heading,
   IconButton,
@@ -13,6 +15,7 @@ import { Link } from "react-router-dom";
 import useResumeRemove from "../hooks/deleteResumes";
 import { Resume } from "../services/resumeService";
 import useResume from "../hooks/useResume";
+import { formatDistanceToNow } from "date-fns";
 
 interface Props {
   resume: Resume;
@@ -71,6 +74,11 @@ const ResumeCard = ({ resume }: Props) => {
           </Box>
         </HStack>
       </CardBody>
+      <Divider />
+      <CardFooter>
+        {resume.heading?.fullName} -{" "}
+        {formatDistanceToNow(new Date(resume.createdAt), { addSuffix: true })}
+      </CardFooter>
     </Card>
   );
 };
