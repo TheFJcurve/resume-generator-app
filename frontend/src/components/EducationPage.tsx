@@ -14,7 +14,7 @@ import {
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import { Education } from "../services/resumeService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImportComponent from "./ImportComponent";
 
 const EducationPage = () => {
@@ -36,6 +36,16 @@ const EducationPage = () => {
         : defaultField
       : defaultField
   );
+
+  useEffect(() => {
+    setInputFields(
+      resume
+        ? resume.education.length == 0
+          ? defaultField
+          : resume.education
+        : defaultField
+    );
+  }, [resume]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

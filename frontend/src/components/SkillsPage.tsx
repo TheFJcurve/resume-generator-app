@@ -12,7 +12,7 @@ import {
   SimpleGrid,
   Textarea,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import { Skill } from "../services/resumeService";
@@ -34,6 +34,16 @@ const SkillsPage = () => {
         : defaultField
       : defaultField
   );
+
+  useEffect(() => {
+    setInputFields(
+      resume
+        ? resume.skills.length == 0
+          ? defaultField
+          : resume.skills
+        : defaultField
+    );
+  }, [resume]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

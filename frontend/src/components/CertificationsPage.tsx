@@ -8,9 +8,9 @@ import {
   Heading,
   IconButton,
   Input,
-  SimpleGrid
+  SimpleGrid,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
@@ -31,6 +31,17 @@ const CertificationsPage = () => {
         : resume?.certifications
       : defaultField
   );
+
+  useEffect(() => {
+    setInputFields(
+      resume
+        ? resume.certifications.length == 0
+          ? defaultField
+          : resume.certifications
+        : defaultField
+    );
+  }, [resume]);
+
   const [quillContent, setQuillContent] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

@@ -8,6 +8,7 @@ const ResumeList = () => {
   const { data, error, isLoading } = getResumes();
   const skeletons = [1, 2];
 
+
   if (error) return <Text>{error.message}</Text>;
 
   return (

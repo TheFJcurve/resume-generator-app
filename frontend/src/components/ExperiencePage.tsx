@@ -15,7 +15,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
-import "react-quill/dist/quill.snow.css";
 import ImportComponent from "./ImportComponent";
 
 const ExperiencePage = () => {
@@ -38,6 +37,16 @@ const ExperiencePage = () => {
         : resume?.experience
       : defaultField
   );
+
+  useEffect(() => {
+    setInputFields(
+      resume
+        ? resume.experience.length == 0
+          ? defaultField
+          : resume.experience
+        : defaultField
+    );
+  }, [resume]);
 
   const [quillContent, setQuillContent] = useState<string[]>([]);
 
@@ -77,6 +86,8 @@ const ExperiencePage = () => {
     data.splice(index, 1);
     setInputFields(data);
   };
+
+  console.log(inputFields);
 
   return (
     <SimpleGrid gap={2}>
