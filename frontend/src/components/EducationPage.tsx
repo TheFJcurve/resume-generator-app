@@ -11,9 +11,10 @@ import {
   Input,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
+import { Education } from "../services/resumeService";
+import { useState } from "react";
 
 const EducationPage = () => {
   const { resume, dispatch } = useResume();
@@ -26,11 +27,12 @@ const EducationPage = () => {
       relevantCourses: "",
     },
   ];
-  const [inputFields, setInputFields] = useState(
+
+  const [inputFields, setInputFields] = useState<Education[]>(
     resume
-      ? resume.education?.length === 0
-        ? defaultField
-        : resume?.education
+      ? resume.education.length !== 0
+        ? resume.education
+        : defaultField
       : defaultField
   );
 

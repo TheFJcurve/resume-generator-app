@@ -1,3 +1,4 @@
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -11,10 +12,10 @@ import {
   SimpleGrid,
   Textarea,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
-import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { Skill } from "../services/resumeService";
 
 const SkillsPage = () => {
   const { resume, dispatch } = useResume();
@@ -25,11 +26,11 @@ const SkillsPage = () => {
     },
   ];
 
-  const [inputFields, setInputFields] = useState(
+  const [inputFields, setInputFields] = useState<Skill[]>(
     resume
-      ? resume.skills?.length === 0
-        ? defaultField
-        : resume?.skills
+      ? resume.skills.length !== 0
+        ? resume.skills
+        : defaultField
       : defaultField
   );
 

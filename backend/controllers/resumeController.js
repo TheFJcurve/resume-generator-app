@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 // get ALL Resumes
 const getAllResumes = async (req, res) => {
   const resumes = await Resume.find({}).sort({ createdAt: -1 });
+  if (!resumes) {
+    return res.status(404).json({ error: "Resumes not found" });
+  }
   res.status(200).json(resumes);
 };
 

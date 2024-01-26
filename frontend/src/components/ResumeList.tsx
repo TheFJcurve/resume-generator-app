@@ -1,14 +1,14 @@
-import { SimpleGrid } from "@chakra-ui/react";
-import useResumes from "../hooks/getResumes";
+import { SimpleGrid, Text } from "@chakra-ui/react";
+import getResumes from "../hooks/getResumes";
 import ResumeCard from "./ResumeCard";
 import ResumeContainer from "./ResumeContainer";
 import ResumeCardSkeleton from "./ResumeCardSkeleton";
 
 const ResumeList = () => {
-  const { data, error, isLoading } = useResumes();
+  const { data, error, isLoading } = getResumes();
   const skeletons = [1, 2];
 
-  if (error) throw error;
+  if (error) return <Text>{error.message}</Text>;
 
   return (
     <SimpleGrid columns={{ sm: 1, md: 2 }} margin={6} gap={4}>

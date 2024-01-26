@@ -1,3 +1,4 @@
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -7,13 +8,12 @@ import {
   Heading,
   IconButton,
   Input,
-  SimpleGrid,
-  Textarea,
+  SimpleGrid
 } from "@chakra-ui/react";
+import { useState } from "react";
+import ReactQuill from "react-quill";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
-import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
-import { useState } from "react";
 
 const CertificationsPage = () => {
   const { resume, dispatch } = useResume();
@@ -30,6 +30,7 @@ const CertificationsPage = () => {
         : resume?.certifications
       : defaultField
   );
+  const [quillContent, setQuillContent] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ const CertificationsPage = () => {
       { length: inputFields.length },
       (_, index) => ({
         name: data.get(`name${index}`) as string,
-        description: data.get(`description${index}`) as string,
+        description: quillContent[index],
       })
     );
 
@@ -90,10 +91,30 @@ const CertificationsPage = () => {
             </FormControl>
             <FormControl>
               <FormLabel>Certification Description</FormLabel>
-              <Textarea
-                name={`description${index}`}
-                placeholder="Learnt Machine Learning on Edx"
-                defaultValue={input.description ? input.description : ""}
+              <ReactQuill
+                id={`description${index}`}
+                theme="snow"
+                defaultValue={input.description}
+                onChange={(value) => {
+                  const updatedQuillContents = [...quillContent];
+                  updatedQuillContents[index] = value;
+                  setQuillContent(updatedQuillContents);
+                }}
+                modules={{
+                  toolbar: [
+                    ["bold", "italic", "underline", "strike", "blockquote"],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                  ],
+                }}
+                formats={[
+                  "bold",
+                  "italic",
+                  "underline",
+                  "strike",
+                  "blockquote",
+                  "list",
+                  "bullet",
+                ]}
               />
             </FormControl>
           </Box>
