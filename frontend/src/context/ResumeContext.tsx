@@ -1,22 +1,22 @@
 // ResumeContext.tsx
 import React, { ReactNode, createContext, useReducer } from "react";
 import {
-  CertificationsPage,
-  EducationPage,
-  ExperiencePage,
-  HeadingPage,
-  ProjectPage,
-  SkillsPage,
+  Certification,
+  Education,
+  Experience,
+  Heading,
+  Project,
+  Skill,
 } from "../services/resumeService";
 
 type ResumeType = {
   name: string;
-  heading: HeadingPage;
-  education: EducationPage[];
-  experience: ExperiencePage[];
-  projects: ProjectPage[];
-  skills: SkillsPage[];
-  certifications: CertificationsPage[];
+  heading: Heading;
+  education: Education[];
+  experience: Experience[];
+  projects: Project[];
+  skills: Skill[];
+  certifications: Certification[];
 };
 
 type UpdateFieldAction = {
