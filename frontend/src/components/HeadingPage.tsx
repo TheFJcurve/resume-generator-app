@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
+import ImportComponent from "./ImportComponent";
 
 const HeadingPage = () => {
   const { resume, dispatch } = useResume();
@@ -30,7 +31,7 @@ const HeadingPage = () => {
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Heading</Heading>
-      <Button colorScheme="teal">Import from another Resume</Button>
+      <ImportComponent componentName="heading" />
       <Form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Full Name</FormLabel>

@@ -14,6 +14,7 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
+import ImportComponent from "./ImportComponent";
 
 const CertificationsPage = () => {
   const { resume, dispatch } = useResume();
@@ -66,7 +67,7 @@ const CertificationsPage = () => {
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Certifications</Heading>
-      <Button colorScheme="teal">Import from another Resume</Button>
+      <ImportComponent componentName="certifications" />
       <Form onSubmit={handleSubmit}>
         {inputFields?.map((input, index) => (
           <Box key={index}>

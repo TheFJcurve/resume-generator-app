@@ -15,15 +15,33 @@ import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
 import useResumeRemove from "../hooks/deleteResumes";
 import { Resume } from "../services/resumeService";
+import useResume from "../hooks/useResume";
 
 interface Props {
   resume: Resume;
-  fetchAndUse: (resume: Resume) => void;
 }
-const ResumeCard = ({ resume, fetchAndUse }: Props) => {
+const ResumeCard = ({ resume }: Props) => {
+  const { dispatch } = useResume();
   const onDelete = (id: string) => {
     useResumeRemove({ id: id });
     window.location.reload();
+  };
+  const fetchAndUse = (resume: Resume) => {
+    console.log(resume);
+    dispatch({
+      type: "SET_RESUME",
+      payload: {
+        name: resume.name,
+        heading: resume.heading
+          ? resume.heading
+          : { fullName: "", email: "", phone: "" },
+        education: resume.education ? resume.education : [],
+        experience: resume.experience ? resume.experience : [],
+        projects: resume.projects ? resume.projects : [],
+        skills: resume.skills ? resume.skills : [],
+        certifications: resume.certifications ? resume.certifications : [],
+      },
+    });
   };
 
   return (

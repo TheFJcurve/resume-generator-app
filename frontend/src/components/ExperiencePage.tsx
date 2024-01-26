@@ -16,6 +16,7 @@ import "react-quill/dist/quill.snow.css";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import "react-quill/dist/quill.snow.css";
+import ImportComponent from "./ImportComponent";
 
 const ExperiencePage = () => {
   const { resume, dispatch } = useResume();
@@ -78,7 +79,7 @@ const ExperiencePage = () => {
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Experience</Heading>
-      <Button colorScheme="teal">Import from another Resume</Button>
+      <ImportComponent componentName="experience" />
       <Form onSubmit={handleSubmit}>
         {inputFields?.map((input, index) => {
           return (

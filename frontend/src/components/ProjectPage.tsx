@@ -15,6 +15,7 @@ import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import ImportComponent from "./ImportComponent";
 
 const ProjectPage = () => {
   const { resume, dispatch } = useResume();
@@ -71,7 +72,7 @@ const ProjectPage = () => {
   return (
     <SimpleGrid gap={3}>
       <Heading marginBottom={5}>Resume Projects</Heading>
-      <Button colorScheme="teal">Import from another Resume</Button>
+      <ImportComponent componentName="projects" />
       <Form onSubmit={handleSubmit}>
         {inputFields.map((input, index) => (
           <Box key={index}>

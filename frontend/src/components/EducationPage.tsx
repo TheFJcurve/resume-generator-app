@@ -15,6 +15,7 @@ import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import { Education } from "../services/resumeService";
 import { useState } from "react";
+import ImportComponent from "./ImportComponent";
 
 const EducationPage = () => {
   const { resume, dispatch } = useResume();
@@ -74,7 +75,7 @@ const EducationPage = () => {
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Education</Heading>
-      <Button colorScheme="teal">Import from another Resume</Button>
+      <ImportComponent componentName="education" />
       <Form onSubmit={handleSubmit}>
         {inputFields?.map((input, index) => {
           return (
