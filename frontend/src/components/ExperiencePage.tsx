@@ -10,7 +10,7 @@ import {
   Input,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Form } from "react-router-dom";
@@ -30,6 +30,7 @@ const ExperiencePage = () => {
       description: "",
     },
   ];
+
   const [inputFields, setInputFields] = useState(
     resume
       ? resume.experience?.length === 0
@@ -37,6 +38,7 @@ const ExperiencePage = () => {
         : resume?.experience
       : defaultField
   );
+
   const [quillContent, setQuillContent] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

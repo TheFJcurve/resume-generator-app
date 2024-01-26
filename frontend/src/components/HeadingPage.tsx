@@ -28,6 +28,7 @@ const HeadingPage = () => {
     dispatch({ type: "UPDATE_RESUME", field: "heading", value: heading });
   };
 
+
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Heading</Heading>
