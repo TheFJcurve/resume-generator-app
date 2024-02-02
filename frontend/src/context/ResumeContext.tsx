@@ -25,15 +25,9 @@ type UpdateFieldAction = {
   value: any; // you can adjust this to be more specific based on your fields
 };
 
-type DeleteFieldAction = {
-  type: "DELETE_RESUME";
-  index: string;
-};
-
 type ResumeAction =
   | { type: "SET_RESUME"; payload: ResumeType }
-  | UpdateFieldAction
-  | DeleteFieldAction;
+  | UpdateFieldAction;
 
 const resumeReducer = (
   state: ResumeType | undefined,

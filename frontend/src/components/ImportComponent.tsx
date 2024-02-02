@@ -12,8 +12,11 @@ const ImportComponent = ({ componentName }: Props) => {
   const { dispatch } = useResume();
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = _.get(data, e.target.value + "." + componentName);
-    dispatch({ type: "UPDATE_RESUME", field: componentName, value: value });
+    if (e.target.value) {
+      const value = _.get(data, e.target.value + "." + componentName);
+      dispatch({ type: "UPDATE_RESUME", field: componentName, value: value });
+      console.log(value)
+    }
   };
 
   return (

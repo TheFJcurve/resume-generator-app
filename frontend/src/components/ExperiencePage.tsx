@@ -87,8 +87,6 @@ const ExperiencePage = () => {
     setInputFields(data);
   };
 
-  console.log(inputFields);
-
   return (
     <SimpleGrid gap={2}>
       <Heading marginBottom={5}>Resume Experience</Heading>
@@ -137,7 +135,7 @@ const ExperiencePage = () => {
                 <Input
                   name={`startDate${index}`}
                   type="date"
-                  placeholder="May 2023 - August 2023"
+                  placeholder="2022-05-01"
                   defaultValue={input.startDate}
                 />
               </FormControl>
@@ -146,7 +144,7 @@ const ExperiencePage = () => {
                 <Input
                   name={`endDate${index}`}
                   type="date"
-                  placeholder="May 2023 - August 2023"
+                  placeholder="2022-08-30"
                   defaultValue={input.endDate ? input.endDate : ""}
                 />
               </FormControl>

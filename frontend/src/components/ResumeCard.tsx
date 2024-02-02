@@ -23,8 +23,7 @@ interface Props {
 const ResumeCard = ({ resume }: Props) => {
   const { dispatch } = useResume();
   const onDelete = (id: string) => {
-    useResumeRemove({ id: id });
-    window.location.reload();
+    useResumeRemove({ id });
   };
   const fetchAndUse = (resume: Resume) => {
     console.log(resume);
