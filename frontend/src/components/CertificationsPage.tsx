@@ -9,9 +9,9 @@ import {
   IconButton,
   Input,
   SimpleGrid,
+  Textarea,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import ImportComponent from "./ImportComponent";
@@ -42,8 +42,6 @@ const CertificationsPage = () => {
     );
   }, [resume]);
 
-  const [quillContent, setQuillContent] = useState<string[]>([]);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -52,7 +50,7 @@ const CertificationsPage = () => {
       { length: inputFields.length },
       (_, index) => ({
         name: data.get(`name${index}`) as string,
-        description: quillContent[index],
+        description: data.get(`description${index}`) as string,
       })
     );
 
@@ -82,9 +80,9 @@ const CertificationsPage = () => {
       <Form onSubmit={handleSubmit}>
         {inputFields?.map((input, index) => (
           <Box key={index}>
-            <FormControl>
+            <FormControl isRequired>
               <HStack>
-                <FormLabel>Certification Name</FormLabel>
+                <FormLabel>Certification Name {index + 1}</FormLabel>
                 <IconButton
                   style={{ marginLeft: "auto" }}
                   onClick={() => removeField(index)}
@@ -101,32 +99,12 @@ const CertificationsPage = () => {
                 defaultValue={input.name}
               />
             </FormControl>
-            <FormControl>
+            <FormControl marginTop={2}>
               <FormLabel>Certification Description</FormLabel>
-              <ReactQuill
-                id={`description${index}`}
-                theme="snow"
+              <Textarea
+                placeholder="Details about the Course or Certification"
                 defaultValue={input.description}
-                onChange={(value) => {
-                  const updatedQuillContents = [...quillContent];
-                  updatedQuillContents[index] = value;
-                  setQuillContent(updatedQuillContents);
-                }}
-                modules={{
-                  toolbar: [
-                    ["bold", "italic", "underline", "strike", "blockquote"],
-                    [{ list: "ordered" }, { list: "bullet" }],
-                  ],
-                }}
-                formats={[
-                  "bold",
-                  "italic",
-                  "underline",
-                  "strike",
-                  "blockquote",
-                  "list",
-                  "bullet",
-                ]}
+                name={`description${index}`}
               />
             </FormControl>
           </Box>

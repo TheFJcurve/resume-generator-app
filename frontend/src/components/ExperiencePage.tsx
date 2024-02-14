@@ -9,9 +9,9 @@ import {
   IconButton,
   Input,
   SimpleGrid,
+  Textarea,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
@@ -48,8 +48,6 @@ const ExperiencePage = () => {
     );
   }, [resume]);
 
-  const [quillContent, setQuillContent] = useState<string[]>([]);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -63,7 +61,7 @@ const ExperiencePage = () => {
         location: data.get(`location${index}`) as string,
         startDate: data.get(`startDate${index}`) as string,
         endDate: data.get(`endDate${index}`) as string,
-        description: quillContent[index],
+        description: data.get(`description${index}`) as string,
       })
     );
 
@@ -74,7 +72,6 @@ const ExperiencePage = () => {
     });
 
     setInputFields(newExperiences);
-    setQuillContent([]);
   };
 
   const addField = () => {
@@ -150,30 +147,10 @@ const ExperiencePage = () => {
               </FormControl>
               <FormControl isRequired>
                 <FormLabel>Job Description</FormLabel>
-                <ReactQuill
-                  id={`description${index}`}
-                  theme="snow"
+                <Textarea
+                  name={`description${index}`}
+                  placeholder="Details of the Job or Experience"
                   defaultValue={input.description}
-                  onChange={(value) => {
-                    const updatedQuillContents = [...quillContent];
-                    updatedQuillContents[index] = value;
-                    setQuillContent(updatedQuillContents);
-                  }}
-                  modules={{
-                    toolbar: [
-                      ["bold", "italic", "underline", "strike", "blockquote"],
-                      [{ list: "ordered" }, { list: "bullet" }],
-                    ],
-                  }}
-                  formats={[
-                    "bold",
-                    "italic",
-                    "underline",
-                    "strike",
-                    "blockquote",
-                    "list",
-                    "bullet",
-                  ]}
                 />
               </FormControl>
             </Box>
