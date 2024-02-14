@@ -18,7 +18,14 @@ import ImportComponent from "./ImportComponent";
 
 interface Props {
   title: string;
-  componentName: "name" | "heading" | "education";
+  componentName:
+    | "name"
+    | "heading"
+    | "education"
+    | "experience"
+    | "projects"
+    | "skills"
+    | "certifications";
   components: string[];
   displayName: string[];
   placeHolderValues: string[];
@@ -107,7 +114,7 @@ const GenericPage = ({
             ).map((componentNumber) => (
               <Box key={componentNumber}>
                 {components.map((component, index) => (
-                  <FormControl key={index} isRequired={isRequired[index]}>
+                  <FormControl key={index} isRequired={isRequired[index]} margin={2}>
                     <FormLabel>
                       {displayName[index]} {componentNumber + 1}
                     </FormLabel>
@@ -142,7 +149,7 @@ const GenericPage = ({
               </Box>
             ))
           : components.map((component, index) => (
-              <FormControl key={index} isRequired={isRequired[index]}>
+              <FormControl key={index} isRequired={isRequired[index]} margin={2}>
                 <FormLabel>{displayName[index]}</FormLabel>
                 <Input
                   name={component}
