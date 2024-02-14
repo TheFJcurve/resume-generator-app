@@ -11,8 +11,8 @@ const headerSchema = new Schema({
     type: String,
     required: true,
   },
-  phone: {
-    type: Number,
+  phoneNumber: {
+    type: String,
     required: true,
   },
   personalWebsite: {
@@ -39,7 +39,7 @@ const educationSchema = new Schema({
     required: false,
   },
   graduationDate: {
-    type: Date,
+    type: String,
     required: false,
   },
   relevantCourses: {
@@ -62,11 +62,11 @@ const experienceSchema = new Schema({
     required: false,
   },
   startDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   endDate: {
-    type: Date,
+    type: String,
     required: false,
   },
   description: {

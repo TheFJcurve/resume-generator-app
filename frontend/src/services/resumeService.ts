@@ -3,7 +3,7 @@ import APIClient from "./apiClient";
 export interface Heading {
     fullName: string;
     email: string;
-    phone: string;
+    phoneNumber: string;
     personalWebsite?: string;
     linkedinUrl?: string;
 }
