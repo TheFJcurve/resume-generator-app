@@ -9,13 +9,14 @@ import useLatexSkills from "./useLatexSkills";
 const useLatex = (resume: ResumeType | undefined) => {
     let latexFile = `\\documentclass{article}
     \\usepackage[left=1cm,top=1cm,right=1cm,bottom=1cm,bindingoffset=0.5cm]{geometry} 
+    \\usepackage{amsmath}
     \\usepackage{fontawesome} 
     \\usepackage{hyperref}
     \\usepackage{setspace}
     \\pagestyle{empty}
     \\singlespacing
     \\begin{document}`;
-    if (resume) {
+    if (resume?.name && resume?.heading.fullName != "") {
         if (resume.heading.fullName != "") {
             latexFile += useLatexHeading(resume.heading);
         }
@@ -34,6 +35,8 @@ const useLatex = (resume: ResumeType | undefined) => {
         if (resume.certifications.length > 0) {
             latexFile += useLatexCertifications(resume.certifications);
         }
+    } else {
+        latexFile += `\\begin{center} Thank you for using Resume Generator \\\\ \\textcopyright \\; Sargun Singh Bhatti, 2024 \\end{center}`
     }
     latexFile += `\\end{document}`;
     return latexFile;

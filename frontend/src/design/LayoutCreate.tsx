@@ -5,15 +5,15 @@ import ResumeComponentList from "../components/ResumeComponentList";
 
 const LayoutCreate = () => {
   return (
-    <SimpleGrid columns={1}>
+    <SimpleGrid columns={1} gap={5}>
       <GridItem>
         <Navbar />
       </GridItem>
-      <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3} padding={3}>
+      <SimpleGrid columns={{ sm: 1, md: 2 }} gap={10} marginLeft={10}>
         <GridItem>
           <ResumeComponentList />
         </GridItem>
-        <GridItem>
+        <GridItem >
           <LatexPDF />
         </GridItem>
       </SimpleGrid>

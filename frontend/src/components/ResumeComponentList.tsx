@@ -41,11 +41,7 @@ const ResumeComponentList = () => {
   };
 
   return (
-    <SimpleGrid
-      columns={{ sm: 1, md: 2 }}
-      margin={3}
-      gap={10}
-    >
+    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={10}>
       <GridItem>
         <TableContainer>
           <Table variant="simple">

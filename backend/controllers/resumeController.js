@@ -1,5 +1,8 @@
 const Resume = require("../models/resumeModel");
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
+const latex = require("node-latex");
 
 // get ALL Resumes
 const getAllResumes = async (req, res) => {
@@ -37,7 +40,8 @@ const createResume = async (req, res) => {
     projects,
     skills,
     certifications,
-    pdf
+    latexCode,
+    pdf,
   } = req.body;
 
   if (!name) {
@@ -53,7 +57,7 @@ const createResume = async (req, res) => {
       projects,
       skills,
       certifications,
-      pdf
+      pdf,
     });
     res.status(200).json(resume);
   } catch (error) {
@@ -100,10 +104,28 @@ const updateResume = async (req, res) => {
   res.status(200).json(resume);
 };
 
+const convertPDF = async (req, res) => {
+  const latexInput = req.body.latexCode;
+  const name = req.body.name;
+
+  fs.writeFileSync("input.tex", latexInput);
+  const input = fs.createReadStream("input.tex");
+  const output = fs.createWriteStream("output.pdf");
+  const pdf = latex(input);
+
+  pdf.pipe(output);
+  pdf.on("error", (err) => console.error(err));
+  pdf.on("finish", async () => {
+    await res.download("output.pdf", `${name}.pdf`, (err) => console.log(err));
+    res.status(200);
+  });
+};
+
 module.exports = {
   getAllResumes,
   getResume,
   createResume,
   deleteResume,
   updateResume,
+  convertPDF,
 };

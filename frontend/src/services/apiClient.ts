@@ -28,6 +28,16 @@ class APIClient<T> {
             body: JSON.stringify(updatedObj),
         }).then((res) => res.json());
     }
+
+    convert = (latexCode: string, name: string) => {
+        return fetch(`${this.endpoint}/convert`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ latexCode, name }),
+        }).then((res) => res.blob());
+    }
 }
 
 export default APIClient;
