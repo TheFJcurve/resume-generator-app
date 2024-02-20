@@ -9,7 +9,7 @@ import {
   Skill,
 } from "../services/resumeService";
 
-type ResumeType = {
+export type ResumeType = {
   name: string;
   heading: Heading;
   education: Education[];
@@ -22,7 +22,7 @@ type ResumeType = {
 type UpdateFieldAction = {
   type: "UPDATE_RESUME";
   field: string;
-  value: any; // you can adjust this to be more specific based on your fields
+  value: any;
 };
 
 type ResumeAction =

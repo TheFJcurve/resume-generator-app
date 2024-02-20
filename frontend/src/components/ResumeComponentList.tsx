@@ -2,6 +2,7 @@ import { Button, SimpleGrid, Table, TableContainer } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import LinkTableItem from "./LinkTableItem";
+import useLatex from "../latex/useLatex";
 
 const ResumeComponentList = () => {
   const { resume, dispatch } = useResume();
@@ -20,6 +21,7 @@ const ResumeComponentList = () => {
     if (!response.ok) {
       throw new Error(json.message);
     } else {
+      useLatex(resume);
       console.log("Resume created successfully!");
       dispatch({ type: "UPDATE_RESUME", field: "name", value: "" });
       dispatch({ type: "UPDATE_RESUME", field: "heading", value: {} });
@@ -29,7 +31,6 @@ const ResumeComponentList = () => {
       dispatch({ type: "UPDATE_RESUME", field: "skills", value: [] });
       dispatch({ type: "UPDATE_RESUME", field: "certifications", value: [] });
     }
-    console.log(json);
   };
 
   return (

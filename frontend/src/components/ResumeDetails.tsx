@@ -30,7 +30,7 @@ const ResumeDetails = () => {
 
             <p>Email: {resume.heading.email}</p>
 
-            <p>Phone Number: {resume.heading.phone}</p>
+            <p>Phone Number: {resume.heading.phoneNumber}</p>
 
             {resume.heading.personalWebsite && (
               <p>Personal Website: {resume.heading.personalWebsite}</p>

@@ -13,13 +13,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <SimpleGrid
-        columns={{ sm: 1, md: 2 }}
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      >
+      <SimpleGrid columns={{ sm: 1, md: 2 }}>
         <VStack
           gap={3}
           style={{
@@ -40,7 +34,7 @@ const Home = () => {
           </Button>
         </VStack>
 
-        <Image src={sampleresume} alt="sample resume" />
+        <Image src={sampleresume} alt="two sample resumes" />
       </SimpleGrid>
       <Text align={"center"} color="gray" fontSize={11}>
         Made by Sargun Singh Bhatti
