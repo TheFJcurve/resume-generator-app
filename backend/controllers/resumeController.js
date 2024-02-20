@@ -37,6 +37,7 @@ const createResume = async (req, res) => {
     projects,
     skills,
     certifications,
+    pdf
   } = req.body;
 
   if (!name) {
@@ -52,6 +53,7 @@ const createResume = async (req, res) => {
       projects,
       skills,
       certifications,
+      pdf
     });
     res.status(200).json(resume);
   } catch (error) {

@@ -16,7 +16,9 @@ const useLatex = (resume: ResumeType | undefined) => {
     \\singlespacing
     \\begin{document}`;
     if (resume) {
-        latexFile += useLatexHeading(resume.heading);
+        if (resume.heading.fullName != "") {
+            latexFile += useLatexHeading(resume.heading);
+        }
         if (resume.education.length > 0) {
             latexFile += useLatexEducation(resume.education);
         }
@@ -34,7 +36,6 @@ const useLatex = (resume: ResumeType | undefined) => {
         }
     }
     latexFile += `\\end{document}`;
-    console.log(latexFile);
     return latexFile;
 }
 

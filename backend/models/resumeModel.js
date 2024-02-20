@@ -146,6 +146,10 @@ const resumeSchema = new Schema(
       type: [certificationSchema],
       required: false,
     },
+    pdf: {
+      data: Buffer,
+      contentType: String,
+    }
   },
   { timestamps: true }
 );

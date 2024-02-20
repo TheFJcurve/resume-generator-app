@@ -1,4 +1,10 @@
-import { Button, SimpleGrid, Table, TableContainer } from "@chakra-ui/react";
+import {
+  Button,
+  GridItem,
+  SimpleGrid,
+  Table,
+  TableContainer,
+} from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import LinkTableItem from "./LinkTableItem";
@@ -21,7 +27,8 @@ const ResumeComponentList = () => {
     if (!response.ok) {
       throw new Error(json.message);
     } else {
-      useLatex(resume);
+      const latexResume = useLatex(resume);
+      console.log(latexResume);
       console.log("Resume created successfully!");
       dispatch({ type: "UPDATE_RESUME", field: "name", value: "" });
       dispatch({ type: "UPDATE_RESUME", field: "heading", value: {} });
@@ -35,35 +42,37 @@ const ResumeComponentList = () => {
 
   return (
     <SimpleGrid
-      style={{
-        display: "flex",
-        width: "100%",
-      }}
       columns={{ sm: 1, md: 2 }}
       margin={3}
       gap={10}
     >
-      <TableContainer>
-        <Table variant="simple">
-          <LinkTableItem link="./name">Resume Name</LinkTableItem>
-          <LinkTableItem link="./heading">Heading</LinkTableItem>
-          <LinkTableItem link="./education">Education</LinkTableItem>
-          <LinkTableItem link="./experience">Experience</LinkTableItem>
-          <LinkTableItem link="./project">Project</LinkTableItem>
-          <LinkTableItem link="./skills">Skills</LinkTableItem>
-          <LinkTableItem link="./certifications">Certifications</LinkTableItem>
-        </Table>
-        <Button
-          colorScheme="teal"
-          marginTop={3}
-          width={"100%"}
-          onClick={postResume}
-          type="submit"
-        >
-          Make
-        </Button>
-      </TableContainer>
-      <Outlet />
+      <GridItem>
+        <TableContainer>
+          <Table variant="simple">
+            <LinkTableItem link="./name">Resume Name</LinkTableItem>
+            <LinkTableItem link="./heading">Heading</LinkTableItem>
+            <LinkTableItem link="./education">Education</LinkTableItem>
+            <LinkTableItem link="./experience">Experience</LinkTableItem>
+            <LinkTableItem link="./project">Project</LinkTableItem>
+            <LinkTableItem link="./skills">Skills</LinkTableItem>
+            <LinkTableItem link="./certifications">
+              Certifications
+            </LinkTableItem>
+          </Table>
+          <Button
+            colorScheme="teal"
+            marginTop={3}
+            width={"100%"}
+            onClick={postResume}
+            type="submit"
+          >
+            Make
+          </Button>
+        </TableContainer>
+      </GridItem>
+      <GridItem>
+        <Outlet />
+      </GridItem>
     </SimpleGrid>
   );
 };

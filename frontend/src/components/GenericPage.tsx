@@ -114,7 +114,11 @@ const GenericPage = ({
             ).map((componentNumber) => (
               <Box key={componentNumber}>
                 {components.map((component, index) => (
-                  <FormControl key={index} isRequired={isRequired[index]} margin={2}>
+                  <FormControl
+                    key={index}
+                    isRequired={isRequired[index]}
+                    margin={2}
+                  >
                     <FormLabel>
                       {displayName[index]} {componentNumber + 1}
                     </FormLabel>
@@ -149,7 +153,11 @@ const GenericPage = ({
               </Box>
             ))
           : components.map((component, index) => (
-              <FormControl key={index} isRequired={isRequired[index]} margin={2}>
+              <FormControl
+                key={index}
+                isRequired={isRequired[index]}
+                margin={2}
+              >
                 <FormLabel>{displayName[index]}</FormLabel>
                 <Input
                   name={component}
@@ -159,7 +167,7 @@ const GenericPage = ({
               </FormControl>
             ))}
 
-        <Button colorScheme="teal" marginTop={3} type="submit">
+        <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>
           Save
         </Button>
       </Form>

@@ -5,13 +5,13 @@ import ErrorPage from "./components/ErrorPage";
 import ExperiencePage from "./components/ExperiencePage";
 import HeadingPage from "./components/HeadingPage";
 import ProjectPage from "./components/ProjectPage";
-import ResumeComponentList from "./components/ResumeComponentList";
-import ResumeList from "./components/ResumeList";
-import SkillsPage from "./components/SkillsPage";
-import Layout from "./design/Layout";
 import ResumeDetails from "./components/ResumeDetails";
+import ResumeList from "./components/ResumeList";
 import ResumeName from "./components/ResumeName";
+import SkillsPage from "./components/SkillsPage";
 import Home from "./design/Home";
+import LayoutCreate from "./design/LayoutCreate";
+import LayoutEdit from "./design/LayoutEdit";
 
 const router = createBrowserRouter([
   {
@@ -19,31 +19,27 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/resume",
-    element: <Layout />,
+    path: "/resume/create",
+    element: <LayoutCreate />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "create",
-        element: <ResumeComponentList />,
-        children: [
-          { path: "", element: <ResumeName /> },
-          { path: "name", element: <ResumeName /> },
-          { path: "heading", element: <HeadingPage /> },
-          { path: "education", element: <EducationPage /> },
-          { path: "experience", element: <ExperiencePage /> },
-          { path: "project", element: <ProjectPage /> },
-          { path: "skills", element: <SkillsPage /> },
-          { path: "certifications", element: <CertificationsPage /> },
-        ],
-      },
-      {
-        path: "edit",
-        children: [
-          { path: "", element: <ResumeList /> },
-          { path: ":id", element: <ResumeDetails /> },
-        ],
-      },
+      { path: "", element: <ResumeName /> },
+      { path: "name", element: <ResumeName /> },
+      { path: "heading", element: <HeadingPage /> },
+      { path: "education", element: <EducationPage /> },
+      { path: "experience", element: <ExperiencePage /> },
+      { path: "project", element: <ProjectPage /> },
+      { path: "skills", element: <SkillsPage /> },
+      { path: "certifications", element: <CertificationsPage /> },
+    ],
+  },
+  {
+    path: "/resume/edit",
+    element: <LayoutEdit />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "", element: <ResumeList /> },
+      { path: ":id", element: <ResumeDetails /> },
     ],
   },
 ]);

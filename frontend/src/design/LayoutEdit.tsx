@@ -2,7 +2,7 @@ import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-const Layout = () => {
+const LayoutEdit = () => {
   return (
     <SimpleGrid
       columns={{ sm: 1, md: 2 }}
@@ -19,4 +19,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default LayoutEdit;

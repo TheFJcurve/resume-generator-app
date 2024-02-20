@@ -33,7 +33,7 @@ const ResumeCard = ({ resume }: Props) => {
         name: resume.name,
         heading: resume.heading
           ? resume.heading
-          : { fullName: "", email: "", phone: "" },
+          : { fullName: "", email: "", phoneNumber: "" },
         education: resume.education ? resume.education : [],
         experience: resume.experience ? resume.experience : [],
         projects: resume.projects ? resume.projects : [],
@@ -64,7 +64,7 @@ const ResumeCard = ({ resume }: Props) => {
             <IconButton
               onClick={() => onDelete(resume._id)}
               aria-label="delete"
-              marginLeft={3}
+              margin={3}
               icon={<DeleteIcon />}
               colorScheme="red"
             />

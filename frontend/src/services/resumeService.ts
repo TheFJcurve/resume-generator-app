@@ -50,6 +50,7 @@ export interface Resume {
     projects?: Project[];
     skills?: Skill[];
     certifications?: Certification[];
+    pdf?: Blob;
     createdAt: Date;
     updatedAt: Date;
 }
