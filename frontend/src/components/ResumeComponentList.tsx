@@ -8,7 +8,6 @@ import {
 import { Outlet } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import LinkTableItem from "./LinkTableItem";
-import useLatex from "../latex/useLatex";
 
 const ResumeComponentList = () => {
   const { resume, dispatch } = useResume();
@@ -27,8 +26,6 @@ const ResumeComponentList = () => {
     if (!response.ok) {
       throw new Error(json.message);
     } else {
-      const latexResume = useLatex(resume);
-      console.log(latexResume);
       console.log("Resume created successfully!");
       dispatch({ type: "UPDATE_RESUME", field: "name", value: "" });
       dispatch({ type: "UPDATE_RESUME", field: "heading", value: {} });
@@ -40,9 +37,10 @@ const ResumeComponentList = () => {
     }
   };
 
+  console.log(resume);
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={10}>
-      <GridItem>
+    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3}>
+      <GridItem width={"250px"}>
         <TableContainer>
           <Table variant="simple">
             <LinkTableItem link="./name">Resume Name</LinkTableItem>

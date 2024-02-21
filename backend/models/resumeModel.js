@@ -146,6 +146,10 @@ const resumeSchema = new Schema(
       type: [certificationSchema],
       required: false,
     },
+    latexCode: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

@@ -41,7 +41,6 @@ const createResume = async (req, res) => {
     skills,
     certifications,
     latexCode,
-    pdf,
   } = req.body;
 
   if (!name) {
@@ -57,7 +56,7 @@ const createResume = async (req, res) => {
       projects,
       skills,
       certifications,
-      pdf,
+      latexCode,
     });
     res.status(200).json(resume);
   } catch (error) {
@@ -116,7 +115,7 @@ const convertPDF = async (req, res) => {
   pdf.pipe(output);
   pdf.on("error", (err) => console.error(err));
   pdf.on("finish", async () => {
-    await res.download("output.pdf", `${name}.pdf`, (err) => console.log(err));
+    await res.download("output.pdf", `${name}.pdf`);
     res.status(200);
   });
 };

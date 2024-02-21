@@ -50,6 +50,7 @@ export interface Resume {
     projects?: Project[];
     skills?: Skill[];
     certifications?: Certification[];
+    latexCode?: string;
     createdAt: Date;
     updatedAt: Date;
 }

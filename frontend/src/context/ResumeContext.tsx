@@ -8,6 +8,7 @@ import {
   Project,
   Skill,
 } from "../services/resumeService";
+import useLatex from "../latex/useLatex";
 
 export type ResumeType = {
   name: string;
@@ -17,6 +18,7 @@ export type ResumeType = {
   projects: Project[];
   skills: Skill[];
   certifications: Certification[];
+  latexCode?: string;
 };
 
 type UpdateFieldAction = {
@@ -41,6 +43,7 @@ const resumeReducer = (
         return {
           ...state,
           [action.field]: action.value,
+          latexCode: useLatex(state)
         };
       }
       return state;
