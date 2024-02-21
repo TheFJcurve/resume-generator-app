@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   HStack,
   Heading,
@@ -12,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <>
+    <Box height={"950px"} marginTop={8}>
       <SimpleGrid columns={{ sm: 1, md: 2 }}>
         <VStack
           gap={3}
@@ -39,7 +40,7 @@ const Home = () => {
       <Text align={"center"} color="gray" fontSize={11}>
         Made by Sargun Singh Bhatti
       </Text>
-    </>
+    </Box>
   );
 };
 
