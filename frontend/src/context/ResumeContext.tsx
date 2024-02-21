@@ -43,7 +43,7 @@ const resumeReducer = (
         return {
           ...state,
           [action.field]: action.value,
-          latexCode: useLatex(state)
+          latexCode: useLatex(state),
         };
       }
       return state;

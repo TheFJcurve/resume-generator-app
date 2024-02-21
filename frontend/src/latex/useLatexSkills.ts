@@ -1,12 +1,13 @@
 import { Skill } from "../services/resumeService"
 
 const useLatexSkills = (skills: Skill[]) => {
-    let latexSkills = `\\textbf{Skills} \\\ \n \\par\\noindent\\rule{\\textwidth}{0.2pt} \\\ \n \\begin{tabular}{ll}`;
+    let latexSkills = `\\header{\\textbf{Skills}} \n`;
+    latexSkills += `\\begin{tabular}{l l} \n`
     const len = skills.length;
     for (let i = 0; i < len; i++) {
-        latexSkills += `\\textbf{${skills[i].skillHeading}}: \& ${skills[i].skill} \\\\ \n`
+        latexSkills += `${skills[i].skillHeading}: \& ${skills[i].skill} \\\\ \n`
     }
-    latexSkills += `\\end{tabular} \n`
+    latexSkills += `\\end{tabular} \\\\ \n`
     return latexSkills;
 }
 
