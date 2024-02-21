@@ -77,10 +77,16 @@ const GenericPage = ({
       for (let i = 0; i < componentCount; i++) {
         components.forEach((component) => {
           if (isDescription[components.indexOf(component)]) {
-            const descriptionCount = data.getAll(`${component}[${i}]`).length;
             const descriptions: string[] = [];
-            for (let j = 0; j < descriptionCount; j++) {
-              descriptions.push(data.getAll(`${component}[${i}]`)[j] as string);
+            let j = 0;
+            while (true) {
+              const descriptionValue = data.get(`${component}[${i}][${j}]`);
+              if (descriptionValue) {
+                descriptions.push(descriptionValue as string);
+                j++;
+              } else {
+                break;
+              }
             }
             updatedComponent[i][component] = descriptions;
           } else {
@@ -126,27 +132,36 @@ const GenericPage = ({
                 {components.map((component, index) =>
                   isDescription[index] ? (
                     <GenericDescriptionField
-                      key={index + componentNumber}
+                      key={index}
                       component={component}
+                      componentName={componentName}
                       componentNumber={componentNumber}
                       componentCount={componentCount}
                       index={index}
+                      name={`${component}[${componentNumber}]`}
                       displayName={displayName[index]}
                       placeHolderValues={placeHolderValues[index]}
-                      defaultValue={_get(resumeComponent, component) || [""]}
+                      defaultValue={_get(
+                        _get(resumeComponent, componentNumber),
+                        component
+                      )}
                       isRequired={isRequired[index]}
                     />
                   ) : (
                     <GenericField
-                      key={index + componentNumber}
+                      key={index}
                       component={component}
                       componentNumber={componentNumber}
                       index={index}
+                      name={`${component}[${componentNumber}]`}
                       displayName={displayName[index]}
                       placeHolderValues={placeHolderValues[index]}
-                      defaultValue={_get(resumeComponent, component) as string}
+                      defaultValue={_get(
+                        _get(resumeComponent, componentNumber),
+                        component
+                      )}
                       isRequired={isRequired[index]}
-                      multiple={false}
+                      multiple={true}
                     />
                   )
                 )}
@@ -180,9 +195,10 @@ const GenericPage = ({
                 component={component}
                 componentNumber={0}
                 index={index}
+                name={component}
                 displayName={displayName[index]}
                 placeHolderValues={placeHolderValues[index]}
-                defaultValue={_get(resumeComponent, component) as string}
+                defaultValue={_get(resumeComponent, component)}
                 isRequired={isRequired[index]}
                 multiple={false}
               />

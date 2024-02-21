@@ -10,7 +10,12 @@ const useLatexExperience = (experience: Experience[]) => {
       latexExperience += `\\textit{${experience[i].position}}`
       if (experience[i].location) latexExperience += `\\hfill ${experience[i].location}`
       latexExperience += `\\\\ \n`
-      latexExperience += `\\begin{itemize} \\itemsep 0pt \n \\item{${experience[i].description}} \n \\end{itemize} \n`
+      latexExperience += `\\begin{itemize} \\itemsep 0pt \n`
+      const descroptionLength = experience[i].description?.length;
+      for (let j = 0; j < descroptionLength; j++) {
+        latexExperience += `\\textbullet ${experience[i].description[j]} \n`
+      }
+      latexExperience += `\\end{itemize} \n`
     }
   return latexExperience;
 }

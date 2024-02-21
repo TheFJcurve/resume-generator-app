@@ -7,7 +7,12 @@ const useLatexProjects = (projects: Project[]) => {
     latexProjects += `\\textbf{${projects[i].projectName}} \\vline \\; \\url{${projects[i].projectLink}}`
     if (projects[i].additionalLink) latexProjects += `\\; \\vline \\; \\url{${projects[i].additionalLink}}`
     latexProjects += `\\\\ \n`
-    latexProjects += `\\begin{itemize} \\itemsep 0pt \n \\item{${projects[i].description}} \n \\end{itemize} \n`
+    latexProjects += `\\begin{itemize} \\itemsep 0pt \n`
+    const descriptionLength = projects[i].description?.length;
+    for (let j = 0; j < descriptionLength; j++) {
+      latexProjects += `\\textbullet ${projects[i].description[j]} \n`
+    }
+    latexProjects += `\\end{itemize} \n`
   }
   return latexProjects;
 }

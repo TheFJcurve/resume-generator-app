@@ -6,13 +6,17 @@ import {
   IconButton,
   Input,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useResume from "../hooks/useResume";
+import _get from "lodash/get";
 
 interface Props {
   component: string;
+  componentName: string;
   componentNumber: number;
   componentCount: number;
   index: number;
+  name: string;
   displayName: string;
   placeHolderValues: string | string[];
   defaultValue: string[];
@@ -21,14 +25,30 @@ interface Props {
 
 const GenericDescriptionField = ({
   component,
+  componentName,
   componentNumber,
   index,
+  name,
   displayName,
   placeHolderValues,
   defaultValue,
   isRequired,
 }: Props) => {
   const [descriptionCount, setDescriptionCount] = useState(1);
+  const { resume } = useResume();
+  useEffect(() => {
+    if (_get(_get(resume, componentName), componentNumber)) {
+      const fetchedResumeComponent = _get(
+        _get(_get(resume, componentName), componentNumber),
+        component
+      );
+      let length = fetchedResumeComponent.length;
+      {
+        length === 0 ? (length = 1) : (length = length);
+      }
+      setDescriptionCount(length);
+    }
+  }, [_get(resume, componentName)]);
 
   return (
     <FormControl
@@ -46,9 +66,9 @@ const GenericDescriptionField = ({
       ).map((descriptionNumber) => (
         <HStack key={index + descriptionNumber} marginTop={3}>
           <Input
-            name={`${component}[${componentNumber}][${descriptionNumber}]`}
+            name={`${name}[${descriptionNumber}]`}
             placeholder={placeHolderValues[descriptionNumber]}
-            defaultValue={defaultValue[descriptionNumber]}
+            defaultValue={defaultValue ? defaultValue[descriptionNumber] : ""}
           />
           <IconButton
             style={{ marginRight: "auto" }}

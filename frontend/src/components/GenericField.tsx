@@ -4,6 +4,7 @@ interface Props {
   component: string;
   componentNumber: number;
   index: number;
+  name: string;
   displayName: string;
   placeHolderValues: string | string[];
   defaultValue: string;
@@ -15,6 +16,7 @@ const GenericField = ({
   component,
   componentNumber,
   index,
+  name,
   displayName,
   placeHolderValues,
   defaultValue,
@@ -27,12 +29,8 @@ const GenericField = ({
         {displayName} {componentNumber + 1}
       </FormLabel>
       <Input
-        name={`${component}[${componentNumber}]`}
-        placeholder={
-          Array.isArray(placeHolderValues)
-            ? placeHolderValues[0]
-            : placeHolderValues
-        }
+        name={name}
+        placeholder={placeHolderValues as string}
         defaultValue={defaultValue}
       />
     </FormControl>
@@ -41,11 +39,7 @@ const GenericField = ({
       <FormLabel>{displayName}</FormLabel>
       <Input
         name={component}
-        placeholder={
-          Array.isArray(placeHolderValues)
-            ? placeHolderValues[0]
-            : placeHolderValues
-        }
+        placeholder={placeHolderValues as string}
         defaultValue={defaultValue}
       />
     </FormControl>
