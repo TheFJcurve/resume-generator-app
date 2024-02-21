@@ -2,6 +2,7 @@ const Resume = require("../models/resumeModel");
 const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
+const os = require("os");
 const latex = require("node-latex");
 
 // get ALL Resumes
@@ -107,15 +108,18 @@ const convertPDF = async (req, res) => {
   const latexInput = req.body.latexCode;
   const name = req.body.name;
 
-  fs.writeFileSync("input.tex", latexInput);
-  const input = fs.createReadStream("input.tex");
-  const output = fs.createWriteStream("output.pdf");
+  const tempDir = os.tmpdir();
+  const tempInputFile = path.join(tempDir, "input.tex");
+  const tempOutputFile = path.join(tempDir, "output.pdf");
+  fs.writeFileSync(tempInputFile, latexInput);
+  const input = fs.createReadStream(tempInputFile);
+  const output = fs.createWriteStream(tempOutputFile);
   const pdf = latex(input);
 
   pdf.pipe(output);
   pdf.on("error", (err) => console.error(err));
   pdf.on("finish", async () => {
-    await res.download("output.pdf", `${name}.pdf`);
+    await res.download(tempOutputFile, `${name}.pdf`);
     res.status(200);
   });
 };
