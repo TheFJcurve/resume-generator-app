@@ -1,9 +1,6 @@
-const express = require("express");
-const resumeRoutes = require("./routes/resumes");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./routes/corsConnections");
-
 
 // Connecting to the Database
 mongoose
