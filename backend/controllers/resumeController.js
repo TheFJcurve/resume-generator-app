@@ -1,9 +1,9 @@
 const Resume = require("../models/resumeModel");
 const mongoose = require("mongoose");
+const latex = require("that-latex-lib");
+const os = require("os");
 const fs = require("fs");
 const path = require("path");
-const os = require("os");
-const latex = require("node-latex");
 
 // get ALL Resumes
 const getAllResumes = async (req, res) => {
@@ -104,6 +104,7 @@ const updateResume = async (req, res) => {
   res.status(200).json(resume);
 };
 
+// convert Latex to PDF
 const convertPDF = async (req, res) => {
   const latexInput = req.body.latexCode;
   const name = req.body.name;
