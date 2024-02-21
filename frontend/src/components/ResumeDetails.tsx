@@ -20,7 +20,7 @@ const ResumeDetails = () => {
 
   useEffect(() => {
     loadOnlyOnce();
-  }, []);
+  }, [resume]);
 
   if (error) throw error;
 
@@ -171,7 +171,7 @@ const ResumeDetails = () => {
         </Heading>
       </GridItem>
       <GridItem width={"710px"}>
-        <iframe src={pdfUrl} width={"120%"} height={"850px"} />
+        <iframe src={pdfUrl} width={"120%"} height={"900px"} />
       </GridItem>
     </SimpleGrid>
   );
