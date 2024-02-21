@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { required } = require("nodemon/lib/config");
 
 const Schema = mongoose.Schema;
 
@@ -70,7 +71,11 @@ const experienceSchema = new Schema({
     required: false,
   },
   description: {
-    type: String,
+    type: [
+      {
+        type: String,
+      },
+    ],
     required: true,
   },
 });
@@ -89,7 +94,11 @@ const projectSchema = new Schema({
     required: false,
   },
   description: {
-    type: String,
+    type: [
+      {
+        type: String,
+      },
+    ],
     required: true,
   },
 });
@@ -111,8 +120,13 @@ const certificationSchema = new Schema({
     required: false,
   },
   description: {
-    type: String,
-    required: false,
+    type: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    required: true,
   },
 });
 

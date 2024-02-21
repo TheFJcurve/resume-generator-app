@@ -22,14 +22,14 @@ export interface Experience {
     location?: string;
     startDate: string;
     endDate?: string;
-    description: string;
+    description: string[];
 }
 
 export interface Project {
     projectName: string;
     projectLink: string;
     additionalLink?: string;
-    description: string;
+    description: string[];
 }
 export interface Skill {
     skillHeading: string;
@@ -38,7 +38,7 @@ export interface Skill {
 
 export interface Certification {
     name: string;
-    description?: string;
+    description?: string[];
 }
 
 export interface Resume {

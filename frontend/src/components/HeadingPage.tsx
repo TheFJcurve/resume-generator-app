@@ -25,6 +25,7 @@ const HeadingPage = () => {
     "https://www.linkedin.com/in/sargun-singh-bhatti/",
   ];
   const mulitple = false;
+  const isDescription = [false, false, false, false, false];
   const isRequired = [true, true, true, false, false];
   return (
     <GenericPage
@@ -34,6 +35,7 @@ const HeadingPage = () => {
       displayName={displayName}
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
+      isDescription={isDescription}
       multiple={mulitple}
     />
   );

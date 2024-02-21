@@ -7,6 +7,7 @@ const SkillsPage = () => {
   const displayName = ["Skill Heading", "Skill"];
   const placeHolderValues = ["Programming", "Python, C++, TypeScript"];
   const isRequired = [true, true];
+  const isDescription = [false, false];
   const multiple = true;
   return (
     <GenericPage
@@ -16,6 +17,7 @@ const SkillsPage = () => {
       displayName={displayName}
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
+      isDescription={isDescription}
       multiple={multiple}
     />
   );

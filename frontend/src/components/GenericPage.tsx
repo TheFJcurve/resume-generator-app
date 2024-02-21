@@ -2,18 +2,17 @@ import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
-  FormControl,
-  FormLabel,
   HStack,
   Heading,
   IconButton,
-  Input,
   SimpleGrid,
 } from "@chakra-ui/react";
 import _get from "lodash/get";
 import { useEffect, useState } from "react";
 import { Form } from "react-router-dom";
 import useResume from "../hooks/useResume";
+import GenericDescriptionField from "./GenericDescriptionField";
+import GenericField from "./GenericField";
 import ImportComponent from "./ImportComponent";
 
 interface Props {
@@ -28,8 +27,9 @@ interface Props {
     | "certifications";
   components: string[];
   displayName: string[];
-  placeHolderValues: string[];
+  placeHolderValues: (string | string[])[];
   isRequired: boolean[];
+  isDescription: boolean[];
   multiple: boolean;
 }
 
@@ -40,6 +40,7 @@ const GenericPage = ({
   displayName,
   placeHolderValues,
   isRequired,
+  isDescription,
   multiple,
 }: Props) => {
   const { resume, dispatch } = useResume();
@@ -69,15 +70,24 @@ const GenericPage = ({
     const data = new FormData(e.currentTarget);
 
     if (multiple) {
-      const updatedComponent: { [key: string]: string }[] = [];
+      const updatedComponent: { [key: string]: string | string[] }[] = [];
       for (let i = 0; i < componentCount; i++) {
         updatedComponent.push({});
       }
       for (let i = 0; i < componentCount; i++) {
         components.forEach((component) => {
-          updatedComponent[i][component] = data.get(
-            `${component}[${i}]`
-          ) as string;
+          if (isDescription[components.indexOf(component)]) {
+            const descriptionCount = data.getAll(`${component}[${i}]`).length;
+            const descriptions: string[] = [];
+            for (let j = 0; j < descriptionCount; j++) {
+              descriptions.push(data.getAll(`${component}[${i}]`)[j] as string);
+            }
+            updatedComponent[i][component] = descriptions;
+          } else {
+            updatedComponent[i][component] = data.get(
+              `${component}[${i}]`
+            ) as string;
+          }
         });
       }
       console.log(updatedComponent);
@@ -113,29 +123,41 @@ const GenericPage = ({
               (_, componentNumber) => componentNumber
             ).map((componentNumber) => (
               <Box key={componentNumber}>
-                {components.map((component, index) => (
-                  <FormControl
-                    key={index}
-                    isRequired={isRequired[index]}
-                    margin={2}
-                  >
-                    <FormLabel>
-                      {displayName[index]} {componentNumber + 1}
-                    </FormLabel>
-                    <Input
-                      name={`${component}[${componentNumber}]`}
-                      placeholder={placeHolderValues[index]}
-                      defaultValue={_get(
-                        _get(resumeComponent, componentNumber),
-                        component
-                      )}
+                {components.map((component, index) =>
+                  isDescription[index] ? (
+                    <GenericDescriptionField
+                      key={index + componentNumber}
+                      component={component}
+                      componentNumber={componentNumber}
+                      componentCount={componentCount}
+                      index={index}
+                      displayName={displayName[index]}
+                      placeHolderValues={placeHolderValues[index]}
+                      defaultValue={_get(resumeComponent, component) || [""]}
+                      isRequired={isRequired[index]}
                     />
-                  </FormControl>
-                ))}
+                  ) : (
+                    <GenericField
+                      key={index + componentNumber}
+                      component={component}
+                      componentNumber={componentNumber}
+                      index={index}
+                      displayName={displayName[index]}
+                      placeHolderValues={placeHolderValues[index]}
+                      defaultValue={_get(resumeComponent, component) as string}
+                      isRequired={isRequired[index]}
+                      multiple={false}
+                    />
+                  )
+                )}
                 <HStack>
                   <IconButton
                     style={{ marginRight: "auto" }}
-                    onClick={() => setComponentCount(componentCount - 1)}
+                    onClick={() =>
+                      setComponentCount(
+                        componentCount > 1 ? componentCount - 1 : 1
+                      )
+                    }
                     colorScheme="red"
                     marginTop={3}
                     icon={<DeleteIcon />}
@@ -153,18 +175,17 @@ const GenericPage = ({
               </Box>
             ))
           : components.map((component, index) => (
-              <FormControl
+              <GenericField
                 key={index}
+                component={component}
+                componentNumber={0}
+                index={index}
+                displayName={displayName[index]}
+                placeHolderValues={placeHolderValues[index]}
+                defaultValue={_get(resumeComponent, component) as string}
                 isRequired={isRequired[index]}
-                margin={2}
-              >
-                <FormLabel>{displayName[index]}</FormLabel>
-                <Input
-                  name={component}
-                  placeholder={placeHolderValues[index]}
-                  defaultValue={_get(resumeComponent, component)}
-                />
-              </FormControl>
+                multiple={false}
+              />
             ))}
 
         <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>

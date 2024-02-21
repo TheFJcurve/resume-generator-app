@@ -37,7 +37,6 @@ const ResumeComponentList = () => {
     }
   };
 
-  console.log(resume);
   return (
     <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3}>
       <GridItem width={"250px"}>

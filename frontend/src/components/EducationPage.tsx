@@ -24,8 +24,9 @@ const EducationPage = () => {
     "April 2027",
     "Object Oriented Programming, Algorithms",
   ];
-  const multiple = true;
   const isRequired = [true, true, true, true, false];
+  const isDescription = [false, false, false, false, false];
+  const multiple = true;
   return (
     <GenericPage
       title={title}
@@ -34,6 +35,7 @@ const EducationPage = () => {
       displayName={displayName}
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
+      isDescription={isDescription}
       multiple={multiple}
     />
   );

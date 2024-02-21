@@ -19,9 +19,14 @@ const ProjectPage = () => {
     "Resume Generator App",
     "www.google.com",
     "www.google.com",
-    "A web application that generates resumes.",
+    [
+      "A web application that generates resumes.",
+      "Built using React.",
+      "You are using it right now!",
+    ],
   ];
   const isRequired = [true, true, false, true];
+  const isDescription = [false, false, false, true];
   const multiple = true;
   return (
     <GenericPage
@@ -31,6 +36,7 @@ const ProjectPage = () => {
       displayName={displayName}
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
+      isDescription={isDescription}
       multiple={multiple}
     />
   );

@@ -7,9 +7,15 @@ const CertificationsPage = () => {
   const displayName = ["Certification Name", "Certification Description"];
   const placeHolderValues = [
     "Cognizant Virtual Experience Program",
-    "Details about the Course or Certification",
+    [
+      "Details about the Course or Certification",
+      "Blah",
+      "Blah Blah",
+      "Blah Blah Blah",
+    ],
   ];
   const isRequired = [true, false];
+  const isDescription = [false, true];
   const multiple = true;
   return (
     <GenericPage
@@ -19,6 +25,7 @@ const CertificationsPage = () => {
       displayName={displayName}
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
+      isDescription={isDescription}
       multiple={multiple}
     />
   );
