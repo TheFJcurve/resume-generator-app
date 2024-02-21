@@ -102,12 +102,12 @@ const ResumeDetails = () => {
                   {e.endDate && <p>End Date: {e.endDate}</p>}
 
                   {e.description && (
-                    <p>
+                    <>
                       Job Descrtiption:{" "}
-                      {e.description.map((v) => (
-                        <p>{v}</p>
+                      {e.description.map((v, index) => (
+                        <p key={index}>{v}</p>
                       ))}
-                    </p>
+                    </>
                   )}
                 </SimpleGrid>
                 <Divider />
@@ -130,12 +130,12 @@ const ResumeDetails = () => {
                     <p>Additional Link: {e.additionalLink}</p>
                   )}
 
-                  <p>
+                  <>
                     Project Description:{" "}
-                    {e.description.map((v) => (
-                      <p>{v}</p>
+                    {e.description.map((v, index) => (
+                      <p key={index}>{v}</p>
                     ))}
-                  </p>
+                  </>
                 </SimpleGrid>
                 <Divider />
               </Box>
@@ -166,12 +166,12 @@ const ResumeDetails = () => {
               <Box key={e.name} padding={1}>
                 <SimpleGrid columns={2} gap={3}>
                   <p>Certificate Name: {e.name}</p>
-                  <p>
+                  <>
                     Certificate Description:{" "}
-                    {e.description.map((v) => (
-                      <p>{v}</p>
+                    {e.description.map((v, index) => (
+                      <p key={index}>{v}</p>
                     ))}
-                  </p>
+                  </>
                 </SimpleGrid>
                 <Divider />
               </Box>
