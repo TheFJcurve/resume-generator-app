@@ -9,6 +9,7 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://resume-generator-app-rosy.vercel.app",
+  "https://resume-generator-backend-six.vercel.app/",
 ];
 
 app.use(
@@ -16,7 +17,6 @@ app.use(
     origin: allowedOrigins,
   })
 );
-
 
 // Setting up the Routes
 app.use("/api/resumes", resumeRoutes);
