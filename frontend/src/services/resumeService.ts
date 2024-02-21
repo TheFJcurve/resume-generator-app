@@ -38,7 +38,7 @@ export interface Skill {
 
 export interface Certification {
     name: string;
-    description?: string[];
+    description: string[];
 }
 
 export interface Resume {

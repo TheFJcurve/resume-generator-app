@@ -13,7 +13,7 @@ const useLatexExperience = (experience: Experience[]) => {
       latexExperience += `\\begin{itemize} \\itemsep 0pt \n`
       const descroptionLength = experience[i].description?.length;
       for (let j = 0; j < descroptionLength; j++) {
-        latexExperience += `\\textbullet ${experience[i].description[j]} \n`
+        latexExperience += `\\item{${experience[i].description[j]}} \n`
       }
       latexExperience += `\\end{itemize} \n`
     }

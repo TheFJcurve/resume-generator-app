@@ -14,7 +14,7 @@ const CertificationsPage = () => {
       "Blah Blah Blah",
     ],
   ];
-  const isRequired = [true, false];
+  const isRequired = [true, true];
   const isDescription = [false, true];
   const multiple = true;
   return (

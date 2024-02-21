@@ -10,7 +10,7 @@ const useLatexProjects = (projects: Project[]) => {
     latexProjects += `\\begin{itemize} \\itemsep 0pt \n`
     const descriptionLength = projects[i].description?.length;
     for (let j = 0; j < descriptionLength; j++) {
-      latexProjects += `\\textbullet ${projects[i].description[j]} \n`
+      latexProjects += `\\item{${projects[i].description[j]}} \n`
     }
     latexProjects += `\\end{itemize} \n`
   }
