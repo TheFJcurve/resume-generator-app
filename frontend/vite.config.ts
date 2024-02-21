@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://resume-generator-backend-mji2.onrender.com",
+        target: "https://resume-generator-backend-git-main-sargun-singh-bhattis-projects.vercel.app",
         changeOrigin: true,
         secure: true,
       },
