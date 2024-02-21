@@ -1,6 +1,5 @@
 const Resume = require("../models/resumeModel");
 const mongoose = require("mongoose");
-const latex = require("that-latex-lib");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
