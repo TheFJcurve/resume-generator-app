@@ -9,27 +9,13 @@ import router from "./routes.tsx";
 import theme from "./theme.ts";
 import { ResumeContextProvider } from "./context/ResumeContext.tsx";
 
-const defaultResume = {
-  name: "",
-  heading: {
-    fullName: "",
-    email: "",
-    phone: "",
-  },
-  education: [],
-  experience: [],
-  projects: [],
-  skills: [],
-  certifications: [],
-};
-
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <ResumeContextProvider initialValue={defaultResume}>
+        <ResumeContextProvider>
           <RouterProvider router={router} />
         </ResumeContextProvider>
         <ReactQueryDevtools />
