@@ -8,7 +8,7 @@ export default defineConfig({
       "/api": {
         target: "https://resume-generator-backend-mji2.onrender.com",
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   },

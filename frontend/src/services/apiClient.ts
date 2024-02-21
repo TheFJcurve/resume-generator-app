@@ -2,10 +2,11 @@ class APIClient<T> {
     endpoint: string;
 
     constructor(endpoint: string) {
-        this.endpoint = endpoint;
+        this.endpoint = "https://resume-generator-backend-mji2.onrender.com"+endpoint;
     }
 
     getAll = () => {
+        console.log(this.endpoint);
         return fetch(this.endpoint).then((res) => res.json());
     }
 
