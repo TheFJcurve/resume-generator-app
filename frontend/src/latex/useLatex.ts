@@ -1,10 +1,7 @@
+import _get from "lodash/get";
 import { ResumeType } from "../context/ResumeContext";
-import useLatexCertifications from "./useLatexCertifications";
-import useLatexEducation from "./useLatexEducation";
-import useLatexExperience from "./useLatexExperience";
+import useLatexComponent from "./useLatexComponent";
 import useLatexHeading from "./useLatexHeading";
-import useLatexProjects from "./useLatexProjects";
-import useLatexSkills from "./useLatexSkills";
 
 const useLatex = (resume: ResumeType | undefined) => {
     let latexFile = `\\documentclass[a4paper]{article}
@@ -45,21 +42,11 @@ const useLatex = (resume: ResumeType | undefined) => {
         if (resume.heading.fullName != "") {
             latexFile += useLatexHeading(resume.heading);
         }
-        if (resume.education.length > 0) {
-            latexFile += useLatexEducation(resume.education);
-        }
-        if (resume.experience.length > 0) {
-            latexFile += useLatexExperience(resume.experience); 
-        }
-        if (resume.projects.length > 0) {
-            latexFile += useLatexProjects(resume.projects);
-        }
-        if (resume.skills.length > 0) {
-            latexFile += useLatexSkills(resume.skills);
-        }
-        if (resume.certifications.length > 0) {
-            latexFile += useLatexCertifications(resume.certifications);
-        }
+        resume.order.forEach((component) => {
+            if (_get(resume, component).length > 0) {
+                latexFile += useLatexComponent(component, _get(resume, component));
+            }
+        })
     } else {
         latexFile += `\\begin{center} Thank you for using Resume Generator \\\\ \\textcopyright \\; Sargun Singh Bhatti, 2024 \\end{center}`
     }

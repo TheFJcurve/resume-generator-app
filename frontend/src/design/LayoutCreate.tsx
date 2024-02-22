@@ -1,7 +1,7 @@
 import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import LatexPDF from "../components/LatexPDF";
 import Navbar from "../components/Navbar";
-import ResumeComponentList from "../components/ResumeComponentList";
+import ResumeComponents from "../components/ResumeComponents";
 
 const LayoutCreate = () => {
   return (
@@ -11,7 +11,7 @@ const LayoutCreate = () => {
       </GridItem>
       <SimpleGrid columns={{ sm: 1, md: 2 }} gap={10} marginLeft={10}>
         <GridItem width={"700px"}>
-          <ResumeComponentList />
+          <ResumeComponents />
         </GridItem>
         <GridItem >
           <LatexPDF />

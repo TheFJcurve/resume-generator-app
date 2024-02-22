@@ -1,13 +1,35 @@
 import {
   Button,
-  GridItem,
-  SimpleGrid,
+  IconButton,
   Table,
   TableContainer,
+  Tbody,
+  Td,
+  Tr,
 } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
 import useResume from "../hooks/useResume";
-import LinkTableItem from "./LinkTableItem";
+import { MdDragIndicator } from "react-icons/md";
+import { Link } from "react-router-dom";
+
+const componentNames = [
+  "Resume Name",
+  "Heading",
+  "Education",
+  "Experience",
+  "Projects",
+  "Skills",
+  "Certifications",
+];
+
+const componentUrls = [
+  "./name",
+  "./heading",
+  "./education",
+  "./experience",
+  "./project",
+  "./skills",
+  "./certifications",
+];
 
 const ResumeComponentList = () => {
   const { resume, dispatch } = useResume();
@@ -38,35 +60,39 @@ const ResumeComponentList = () => {
   };
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3}>
-      <GridItem width={"250px"}>
-        <TableContainer>
-          <Table variant="simple">
-            <LinkTableItem link="./name">Resume Name</LinkTableItem>
-            <LinkTableItem link="./heading">Heading</LinkTableItem>
-            <LinkTableItem link="./education">Education</LinkTableItem>
-            <LinkTableItem link="./experience">Experience</LinkTableItem>
-            <LinkTableItem link="./project">Project</LinkTableItem>
-            <LinkTableItem link="./skills">Skills</LinkTableItem>
-            <LinkTableItem link="./certifications">
-              Certifications
-            </LinkTableItem>
-          </Table>
-          <Button
-            colorScheme="teal"
-            marginTop={3}
-            width={"100%"}
-            onClick={postResume}
-            type="submit"
-          >
-            Make
-          </Button>
-        </TableContainer>
-      </GridItem>
-      <GridItem>
-        <Outlet />
-      </GridItem>
-    </SimpleGrid>
+    <TableContainer>
+      <Table variant="simple">
+        {componentNames.map((component, index) => (
+          <Tbody>
+            <Tr>
+              <Td>
+                {componentUrls[index] !== "./name" &&
+                componentUrls[index] !== "./heading" ? (
+                  <IconButton
+                    aria-label="button"
+                    type="button"
+                    icon={<MdDragIndicator style={{ cursor: "grab" }} />}
+                    variant={"ghost"}
+                    color={"teal.300"}
+                    marginRight={5}
+                  />
+                ) : null}
+                <Link to={componentUrls[index]}>{component}</Link>
+              </Td>
+            </Tr>
+          </Tbody>
+        ))}
+      </Table>
+      <Button
+        colorScheme="teal"
+        marginTop={3}
+        width={"100%"}
+        onClick={postResume}
+        type="submit"
+      >
+        Make
+      </Button>
+    </TableContainer>
   );
 };
 

@@ -40,6 +40,9 @@ const Home = () => {
       <Text align={"center"} color="gray" fontSize={11}>
         Made by Sargun Singh Bhatti
       </Text>
+      <Text align={"center"} color="gray" fontSize={11}>
+        Inspired by Resumake.io
+      </Text>
     </Box>
   );
 };

@@ -22,6 +22,8 @@ const defaultResume = {
   projects: [],
   skills: [],
   certifications: [],
+  latexCode: "",
+  order: ["education", "experience", "projects", "skills", "certifications"],
 };
 
 const queryClient = new QueryClient();

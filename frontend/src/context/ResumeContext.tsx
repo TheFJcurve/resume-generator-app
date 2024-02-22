@@ -19,6 +19,7 @@ export type ResumeType = {
   skills: Skill[];
   certifications: Certification[];
   latexCode?: string;
+  order: string[];
 };
 
 type UpdateFieldAction = {
