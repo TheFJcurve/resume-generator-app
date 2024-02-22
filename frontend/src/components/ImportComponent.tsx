@@ -22,11 +22,11 @@ const ImportComponent = ({ componentName }: Props) => {
   return (
     <Select placeholder="Import from another Resume" onChange={handleSelect}>
       {data?.map((resume, index) =>
-        _get(resume, componentName) ? null : (
+        _get(resume, componentName)?.length !== 0 ? (
           <option value={index} key={resume._id}>
             {resume.name}
           </option>
-        )
+        ) : null
       )}
     </Select>
   );

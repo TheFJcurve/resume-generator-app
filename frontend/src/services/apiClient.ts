@@ -20,6 +20,7 @@ class APIClient<T> {
     }
 
     update = (id: string, updatedObj: T) => {
+        console.log(id, updatedObj)
         return fetch(`${this.endpoint}/${id}`, {
             method: "PUT",
             headers: {

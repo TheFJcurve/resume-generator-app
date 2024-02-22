@@ -1,7 +1,6 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 interface Props {
-  component: string;
   componentNumber: number;
   index: number;
   name: string;
@@ -13,7 +12,6 @@ interface Props {
 }
 
 const GenericField = ({
-  component,
   componentNumber,
   index,
   name,
@@ -38,7 +36,7 @@ const GenericField = ({
     <FormControl key={index} isRequired={isRequired} margin={2}>
       <FormLabel>{displayName}</FormLabel>
       <Input
-        name={component}
+        name={name}
         placeholder={placeHolderValues as string}
         defaultValue={defaultValue}
       />

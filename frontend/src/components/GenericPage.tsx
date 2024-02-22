@@ -96,7 +96,6 @@ const GenericPage = ({
           }
         });
       }
-      console.log(updatedComponent);
 
       dispatch({
         type: "UPDATE_RESUME",
@@ -108,7 +107,6 @@ const GenericPage = ({
       components.forEach((component) => {
         updatedComponent[component] = data.get(`${component}`) as string;
       });
-      console.log(updatedComponent);
 
       dispatch({
         type: "UPDATE_RESUME",
@@ -150,7 +148,6 @@ const GenericPage = ({
                   ) : (
                     <GenericField
                       key={index}
-                      component={component}
                       componentNumber={componentNumber}
                       index={index}
                       name={`${component}[${componentNumber}]`}
@@ -192,7 +189,6 @@ const GenericPage = ({
           : components.map((component, index) => (
               <GenericField
                 key={index}
-                component={component}
                 componentNumber={0}
                 index={index}
                 name={component}

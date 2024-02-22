@@ -10,6 +10,20 @@ import theme from "./theme.ts";
 import { ResumeContextProvider } from "./context/ResumeContext.tsx";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
+const defaultResume = {
+  name: "",
+  heading: {
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+  },
+  education: [],
+  experience: [],
+  projects: [],
+  skills: [],
+  certifications: [],
+};
+
 const queryClient = new QueryClient();
 
 if (import.meta.env.NODE_ENV === "development") disableReactDevTools();
@@ -18,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <ResumeContextProvider>
+        <ResumeContextProvider initialValue={defaultResume}>
           <RouterProvider router={router} />
         </ResumeContextProvider>
         <ReactQueryDevtools />
