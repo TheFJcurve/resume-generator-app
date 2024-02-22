@@ -7,7 +7,10 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://resume-generator-app.onrender.com",
+];
 
 app.use(
   cors({
