@@ -41,11 +41,15 @@ const resumeReducer = (
       return action.payload;
     case "UPDATE_RESUME":
       if (state) {
-        return {
+        let newState = {
           ...state,
           [action.field]: action.value,
-          latexCode: useLatex(state),
         };
+        newState = {
+          ...newState,
+          latexCode: useLatex(newState),
+        };
+        return newState;
       }
       return state;
     default:

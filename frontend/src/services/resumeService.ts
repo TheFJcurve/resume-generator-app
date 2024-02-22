@@ -41,9 +41,6 @@ export interface Certification {
     description: string[];
 }
 
-export interface Order {
-    order: string[];
-}
 
 export interface Resume {
     _id: string;
@@ -55,7 +52,7 @@ export interface Resume {
     skills?: Skill[];
     certifications?: Certification[];
     latexCode?: string;
-    order?: Order;
+    order?: string[];
     createdAt: Date;
     updatedAt: Date;
 }

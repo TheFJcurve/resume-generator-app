@@ -40,6 +40,27 @@ const ResumeCard = ({ resume }: Props) => {
         projects: resume.projects ? resume.projects : [],
         skills: resume.skills ? resume.skills : [],
         certifications: resume.certifications ? resume.certifications : [],
+        order: resume.order
+          ? resume.order.length > 0
+            ? resume.order
+            : [
+                "name",
+                "heading",
+                "education",
+                "experience",
+                "projects",
+                "skills",
+                "certifications",
+              ]
+          : [
+              "name",
+              "heading",
+              "education",
+              "experience",
+              "projects",
+              "skills",
+              "certifications",
+            ],
       },
     });
   };
