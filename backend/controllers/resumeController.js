@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
+const latex = require("node-latex");
 
 // get ALL Resumes
 const getAllResumes = async (req, res) => {
