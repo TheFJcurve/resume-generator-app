@@ -7,11 +7,11 @@ import {
   Td,
   Tr,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import _get from "lodash/get";
+import { useEffect, useState } from "react";
 import { MdDragIndicator } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useResume from "../hooks/useResume";
-import _get from "lodash/get";
 
 const componentUrls = {
   name: "./name",
@@ -36,9 +36,11 @@ const componentDisplayName = {
 const ResumeComponentList = () => {
   const { resume, dispatch } = useResume();
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-  const [updatedItems, setUpdatedItems] = useState<string[]>(
-    resume?.order || []
-  );
+  let localOrder = resume?.order || [];
+
+  useEffect(() => {
+    localOrder = resume?.order || [];
+  }, [resume?.order]);
 
   const postResume = async () => {
     console.log(resume);
@@ -93,12 +95,12 @@ const ResumeComponentList = () => {
     const changedOrder = [...order];
     changedOrder.splice(draggedIndex, 1);
     changedOrder.splice(index, 0, draggedItem);
-    setUpdatedItems(changedOrder);
+    localOrder = changedOrder;
+    console.log(localOrder);
   };
 
   const handleDragEnd = () => {
-    console.log(updatedItems);
-    dispatch({ type: "UPDATE_RESUME", field: "order", value: updatedItems });
+    dispatch({ type: "UPDATE_RESUME", field: "order", value: localOrder });
     setDraggedIndex(null);
   };
 
@@ -106,7 +108,7 @@ const ResumeComponentList = () => {
     <TableContainer>
       <Table variant="simple">
         <Tbody>
-          {resume?.order.map((component, index) => (
+          {localOrder.map((component, index) => (
             <Tr
               key={index}
               draggable
