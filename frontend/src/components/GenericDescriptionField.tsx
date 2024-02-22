@@ -68,7 +68,7 @@ const GenericDescriptionField = ({
           <Input
             name={`${name}[${descriptionNumber}]`}
             placeholder={placeHolderValues[descriptionNumber]}
-            defaultValue={defaultValue ? defaultValue[descriptionNumber] : ""}
+            defaultValue={defaultValue[descriptionNumber]}
           />
           <IconButton
             style={{ marginRight: "auto" }}

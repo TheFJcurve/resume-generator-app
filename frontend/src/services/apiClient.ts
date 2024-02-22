@@ -2,11 +2,10 @@ class APIClient<T> {
     endpoint: string;
 
     constructor(endpoint: string) {
-        this.endpoint = "https://resume-generator-backend-git-main-sargun-singh-bhattis-projects.vercel.app" + endpoint;
+        this.endpoint = endpoint;
     }
 
     getAll = () => {
-        console.log(this.endpoint);
         return fetch(this.endpoint).then((res) => res.json());
     }
 
