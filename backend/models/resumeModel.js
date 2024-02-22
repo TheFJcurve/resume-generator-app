@@ -163,6 +163,10 @@ const resumeSchema = new Schema(
       type: String,
       required: false,
     },
+    order: {
+      type: [String],
+      required: false,
+    },
   },
   { timestamps: true }
 );

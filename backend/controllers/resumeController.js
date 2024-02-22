@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
+const latex = require("node-latex");
 
 // get ALL Resumes
 const getAllResumes = async (req, res) => {
@@ -41,6 +42,7 @@ const createResume = async (req, res) => {
     skills,
     certifications,
     latexCode,
+    order,
   } = req.body;
 
   if (!name) {
@@ -57,6 +59,7 @@ const createResume = async (req, res) => {
       skills,
       certifications,
       latexCode,
+      order,
     });
     res.status(200).json(resume);
   } catch (error) {
