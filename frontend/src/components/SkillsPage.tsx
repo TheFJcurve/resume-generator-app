@@ -18,6 +18,7 @@ const SkillsPage = () => {
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
       isDescription={isDescription}
+      nextPage="../certifications"
       multiple={multiple}
     />
   );

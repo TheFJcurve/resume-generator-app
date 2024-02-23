@@ -3,10 +3,11 @@ import {
   Button,
   FormControl,
   FormLabel,
+  HStack,
   Heading,
   Input,
 } from "@chakra-ui/react";
-import { Form } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import useResume from "../hooks/useResume";
 
 const ResumeName = () => {
@@ -34,9 +35,21 @@ const ResumeName = () => {
             placeholder="Software Developer Resume"
             defaultValue={resume?.name}
           />
-          <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>
-            Save
-          </Button>
+          <HStack>
+            <Button
+              colorScheme="teal"
+              marginTop={3}
+              type="submit"
+              width={"100%"}
+            >
+              Save
+            </Button>
+            <Link to={"../heading"} style={{ width: "100%" }}>
+              <Button marginTop={3} colorScheme="blue" width={"100%"}>
+                Next
+              </Button>
+            </Link>
+          </HStack>
         </FormControl>
       </Form>
     </Box>

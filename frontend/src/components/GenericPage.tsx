@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import _get from "lodash/get";
 import { useEffect, useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import GenericDescriptionField from "./GenericDescriptionField";
 import GenericField from "./GenericField";
@@ -30,6 +30,7 @@ interface Props {
   placeHolderValues: (string | string[])[];
   isRequired: boolean[];
   isDescription: boolean[];
+  nextPage: string;
   multiple: boolean;
 }
 
@@ -41,6 +42,7 @@ const GenericPage = ({
   placeHolderValues,
   isRequired,
   isDescription,
+  nextPage,
   multiple,
 }: Props) => {
   const { resume, dispatch } = useResume();
@@ -200,9 +202,16 @@ const GenericPage = ({
               />
             ))}
 
-        <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>
-          Save
-        </Button>
+        <HStack>
+          <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>
+            Save
+          </Button>
+          <Link to={nextPage} style={{ width: "100%" }}>
+            <Button colorScheme="blue" marginTop={3} width={"100%"}>
+              Next
+            </Button>
+          </Link>
+        </HStack>
       </Form>
     </SimpleGrid>
   );

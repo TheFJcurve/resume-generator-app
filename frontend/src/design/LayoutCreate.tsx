@@ -10,10 +10,10 @@ const LayoutCreate = () => {
         <Navbar />
       </GridItem>
       <SimpleGrid columns={{ sm: 1, md: 2 }} gap={10} marginLeft={10}>
-        <GridItem width={"700px"}>
+        <GridItem width={"100%"}>
           <ResumeComponents />
         </GridItem>
-        <GridItem >
+        <GridItem width={"100%"}>
           <LatexPDF />
         </GridItem>
       </SimpleGrid>
