@@ -24,6 +24,7 @@ interface Props {
 const ResumeCard = ({ resume }: Props) => {
   const { dispatch } = useResume();
   const onDelete = (id: string) => {
+    window.location.reload();
     useResumeRemove({ id });
   };
   const fetchAndUse = (resume: Resume) => {
@@ -61,6 +62,7 @@ const ResumeCard = ({ resume }: Props) => {
               "skills",
               "certifications",
             ],
+        font: resume.font ? resume.font : "lmodern",
       },
     });
   };

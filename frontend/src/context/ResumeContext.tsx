@@ -20,6 +20,7 @@ export type ResumeType = {
   certifications: Certification[];
   latexCode?: string;
   order: string[];
+  font: string;
 };
 
 type UpdateFieldAction = {

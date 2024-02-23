@@ -167,6 +167,10 @@ const resumeSchema = new Schema(
       type: [String],
       required: false,
     },
+    font: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

@@ -19,9 +19,13 @@ const useLatex = (resume: ResumeType | undefined) => {
     \\usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.6in]{geometry}
 
 
-\\def\\bull{\\vrule height 0.8ex width .7ex depth -.1ex }
+\\def\\bull{\\vrule height 0.8ex width .7ex depth -.1ex } \n`
 
-% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+if (resume?.font) {
+    latexFile += `\\usepackage{${resume.font}} \n`
+}
+
+latexFile += `% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
 
 \\newcommand{\\lineunder} {
     \\vspace*{-8pt} \\\\

@@ -53,6 +53,7 @@ export interface Resume {
     certifications?: Certification[];
     latexCode?: string;
     order?: string[];
+    font?: string;
     createdAt: Date;
     updatedAt: Date;
 }

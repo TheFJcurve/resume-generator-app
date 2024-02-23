@@ -32,6 +32,7 @@ const defaultResume = {
     "skills",
     "certifications",
   ],
+  font: "lmodern",
 };
 
 const queryClient = new QueryClient();

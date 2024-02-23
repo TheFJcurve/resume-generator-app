@@ -43,6 +43,7 @@ const createResume = async (req, res) => {
     certifications,
     latexCode,
     order,
+    font,
   } = req.body;
 
   if (!name) {
@@ -60,6 +61,7 @@ const createResume = async (req, res) => {
       certifications,
       latexCode,
       order,
+      font,
     });
     res.status(200).json(resume);
   } catch (error) {

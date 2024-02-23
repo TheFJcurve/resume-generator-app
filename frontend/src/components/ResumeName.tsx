@@ -6,6 +6,7 @@ import {
   HStack,
   Heading,
   Input,
+  Select,
 } from "@chakra-ui/react";
 import { Form, Link } from "react-router-dom";
 import useResume from "../hooks/useResume";
@@ -21,6 +22,11 @@ const ResumeName = () => {
     };
 
     dispatch({ type: "UPDATE_RESUME", field: "name", value: newName.name });
+
+    const newFont = {
+      font: data.get("font") as string,
+    };
+    dispatch({ type: "UPDATE_RESUME", field: "font", value: newFont.font });
   };
 
   return (
@@ -35,6 +41,22 @@ const ResumeName = () => {
             placeholder="Software Developer Resume"
             defaultValue={resume?.name}
           />
+          <FormControl marginTop={3}>
+            <FormLabel>Default Font</FormLabel>
+            <Select
+              name="font"
+              placeholder="Default Font"
+              defaultValue={"lmodern"}
+            >
+              <option value="utopia" style={{ font: "" }}>
+                Utopia
+              </option>
+              <option value="mathptmx">Times New Roman</option>
+              <option value="tgtermes">Gyre Termes</option>
+              <option value="tgheros">Gyre Heros</option>
+              <option value="helvet">Helvetica</option>
+            </Select>
+          </FormControl>
           <HStack>
             <Button
               colorScheme="teal"
