@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import _get from "lodash/get";
 import { useEffect, useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import useResume from "../hooks/useResume";
 import GenericDescriptionField from "./GenericDescriptionField";
 import GenericField from "./GenericField";
@@ -50,6 +50,7 @@ const GenericPage = ({
   const [resumeComponent, setResumeComponent] = useState(
     _get(resume, componentName)
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchedResumeComponent = _get(resume, componentName);
@@ -116,6 +117,8 @@ const GenericPage = ({
         value: updatedComponent,
       });
     }
+
+    navigate(nextPage);
   };
 
   return (
@@ -202,16 +205,9 @@ const GenericPage = ({
               />
             ))}
 
-        <HStack>
-          <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>
-            Save
-          </Button>
-          <Link to={nextPage} style={{ width: "100%" }}>
-            <Button colorScheme="blue" marginTop={3} width={"100%"}>
-              Next
-            </Button>
-          </Link>
-        </HStack>
+        <Button colorScheme="teal" marginTop={3} type="submit" width={"100%"}>
+          Next
+        </Button>
       </Form>
     </SimpleGrid>
   );

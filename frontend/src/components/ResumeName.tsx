@@ -3,16 +3,16 @@ import {
   Button,
   FormControl,
   FormLabel,
-  HStack,
   Heading,
   Input,
   Select,
 } from "@chakra-ui/react";
-import { Form, Link } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import useResume from "../hooks/useResume";
 
 const ResumeName = () => {
   const { resume, dispatch } = useResume();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,6 +27,8 @@ const ResumeName = () => {
       font: data.get("font") as string,
     };
     dispatch({ type: "UPDATE_RESUME", field: "font", value: newFont.font });
+
+    navigate("../heading");
   };
 
   return (
@@ -57,21 +59,9 @@ const ResumeName = () => {
               <option value="helvet">Helvetica</option>
             </Select>
           </FormControl>
-          <HStack>
-            <Button
-              colorScheme="teal"
-              marginTop={3}
-              type="submit"
-              width={"100%"}
-            >
-              Save
-            </Button>
-            <Link to={"../heading"} style={{ width: "100%" }}>
-              <Button marginTop={3} colorScheme="blue" width={"100%"}>
-                Next
-              </Button>
-            </Link>
-          </HStack>
+          <Button type="submit" marginTop={3} colorScheme="teal" width={"100%"}>
+            Next
+          </Button>
         </FormControl>
       </Form>
     </Box>
