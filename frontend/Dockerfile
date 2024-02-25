@@ -9,4 +9,4 @@ RUN npm install
 COPY --chown=app:node . .
 
 EXPOSE 5173
-CMD ["npm", "run", "dev"]
+ENTRYPOINT npm run dev -- --host
