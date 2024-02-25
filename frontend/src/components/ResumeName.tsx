@@ -66,7 +66,7 @@ const ResumeName = () => {
             >
               Save
             </Button>
-            <Link to={"./heading"} style={{ width: "100%" }}>
+            <Link to={"../heading"} style={{ width: "100%" }}>
               <Button marginTop={3} colorScheme="blue" width={"100%"}>
                 Next
               </Button>

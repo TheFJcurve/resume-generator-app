@@ -23,7 +23,6 @@ const router = createBrowserRouter([
     element: <LayoutCreate />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "", element: <ResumeName /> },
       { path: "name", element: <ResumeName /> },
       { path: "heading", element: <HeadingPage /> },
       { path: "education", element: <EducationPage /> },

@@ -28,7 +28,7 @@ const Home = () => {
             <Heading color="teal.300">Generator</Heading>
           </HStack>
           <Button colorScheme="teal" variant={"solid"} borderRadius={15}>
-            <Link to="/resume/create">Create New</Link>
+            <Link to="/resume/create/name">Create New</Link>
           </Button>
           <Button colorScheme="teal" variant={"outline"} borderRadius={15}>
             <Link to="/resume/edit">Use Existing Resume</Link>
