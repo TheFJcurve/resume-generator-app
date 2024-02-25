@@ -43,7 +43,6 @@ const ExperiencePage = () => {
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
       isDescription={isDescription}
-      nextPage="../projects"
       multiple={multiple}
     />
   );

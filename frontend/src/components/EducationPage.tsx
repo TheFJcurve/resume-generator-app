@@ -36,7 +36,6 @@ const EducationPage = () => {
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
       isDescription={isDescription}
-      nextPage="../experience"
       multiple={multiple}
     />
   );

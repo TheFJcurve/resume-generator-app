@@ -36,7 +36,6 @@ const HeadingPage = () => {
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
       isDescription={isDescription}
-      nextPage="../education"
       multiple={mulitple}
     />
   );

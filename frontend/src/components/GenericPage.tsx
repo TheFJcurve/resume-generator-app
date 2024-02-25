@@ -15,6 +15,16 @@ import GenericDescriptionField from "./GenericDescriptionField";
 import GenericField from "./GenericField";
 import ImportComponent from "./ImportComponent";
 
+const pageLinks = {
+  name: "./name",
+  heading: "./heading",
+  education: "./education",
+  experience: "./experience",
+  projects: "./projects",
+  skills: "./skills",
+  certifications: "./certifications",
+};
+
 interface Props {
   title: string;
   componentName:
@@ -30,7 +40,6 @@ interface Props {
   placeHolderValues: (string | string[])[];
   isRequired: boolean[];
   isDescription: boolean[];
-  nextPage: string;
   multiple: boolean;
 }
 
@@ -42,10 +51,10 @@ const GenericPage = ({
   placeHolderValues,
   isRequired,
   isDescription,
-  nextPage,
   multiple,
 }: Props) => {
   const { resume, dispatch } = useResume();
+  let order = resume?.order;
   const [componentCount, setComponentCount] = useState(1);
   const [resumeComponent, setResumeComponent] = useState(
     _get(resume, componentName)
@@ -65,6 +74,7 @@ const GenericPage = ({
       }
       setComponentCount(length);
     }
+    order = resume?.order;
   }, [resume]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -118,7 +128,13 @@ const GenericPage = ({
       });
     }
 
-    navigate(nextPage);
+    navigate(
+      "../" +
+        _get(
+          pageLinks,
+          order ? order[order.indexOf(componentName) + 1] : "name"
+        )
+    );
   };
 
   return (

@@ -37,8 +37,6 @@ const ProjectPage = () => {
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
       isDescription={isDescription}
-
-      nextPage="../skills"
       multiple={multiple}
     />
   );

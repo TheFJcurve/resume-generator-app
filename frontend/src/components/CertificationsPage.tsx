@@ -26,7 +26,6 @@ const CertificationsPage = () => {
       placeHolderValues={placeHolderValues}
       isRequired={isRequired}
       isDescription={isDescription}
-      nextPage="../name"
       multiple={multiple}
     />
   );
