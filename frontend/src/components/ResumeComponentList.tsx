@@ -18,7 +18,7 @@ const componentUrls = {
   heading: "./heading",
   education: "./education",
   experience: "./experience",
-  projects: "./project",
+  projects: "./projects",
   skills: "./skills",
   certifications: "./certifications",
 };
