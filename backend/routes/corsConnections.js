@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:80", "http://localhost:5173"];
 
 app.use(
   cors({
@@ -15,10 +15,15 @@ app.use(
   })
 );
 
+app.use((req, _, next) => {
+  console.log(req.path, req.method);
+  next();
+});
+
 // Setting up the Routes
 app.use("/api/resumes", resumeRoutes);
 
-app.use((req, res) => {
+app.use((_, res) => {
   res.sendFile(path.join(__dirname + "/webpage.html"));
 });
 
