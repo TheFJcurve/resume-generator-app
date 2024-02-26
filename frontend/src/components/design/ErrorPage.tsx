@@ -1,22 +1,31 @@
-import { Flex, HStack, Heading, Image } from "@chakra-ui/react";
+import { Button, Heading, Image, SimpleGrid, VStack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import errorGif from "../../assets/arpitBala.gif";
 
 const ErrorPage = () => {
+  const navigate = useNavigate();
   return (
-    <Flex
-      direction={"column"}
-      justify={"center"}
-      align={"center"}
-      minHeight={"100vh"}
-      gap={10}
+    <SimpleGrid
+      display={"flex"}
+      justifyItems={"center"}
+      alignItems={"center"}
+      height={"100vh"}
     >
-      <HStack>
-        <Heading>The page you</Heading>
-        <Heading color={"teal.300"}> requested </Heading>
-        <Heading>was not found</Heading>
-      </HStack>
-      <Image src={errorGif} alt="404 error" width={"600px"} borderRadius={10} />
-    </Flex>
+      <VStack gap={5}>
+        <Heading size={{ sm: "sm", md: "md", lg: "lg" }}>
+          The page you requested does not exist.
+        </Heading>
+        <Image
+          src={errorGif}
+          alt="404 error"
+          width={"600px"}
+          borderRadius={30}
+        />
+        <Button colorScheme="teal" onClick={() => navigate("/")}>
+          Go to the Home Page
+        </Button>
+      </VStack>
+    </SimpleGrid>
   );
 };
 
