@@ -7,7 +7,11 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ["http://localhost:80", "http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:80",
+  "http://localhost:5173",
+  "https://resume-generator-app-red.vercel.app",
+];
 
 app.use(
   cors({
