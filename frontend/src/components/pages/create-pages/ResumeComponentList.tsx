@@ -11,8 +11,8 @@ import _get from "lodash/get";
 import { useEffect, useState } from "react";
 import { MdDragIndicator } from "react-icons/md";
 import { Link } from "react-router-dom";
-import useResume from "../hooks/useResume";
-import resumeService from "../services/resumeService";
+import useResume from "../../../hooks/useResume";
+import resumeService from "../../../services/resumeService";
 
 const componentUrls = {
   name: "./name",

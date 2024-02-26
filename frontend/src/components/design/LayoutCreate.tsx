@@ -1,7 +1,7 @@
 import { GridItem, SimpleGrid } from "@chakra-ui/react";
-import LatexPDF from "../components/LatexPDF";
-import Navbar from "../components/Navbar";
-import ResumeComponents from "../components/ResumeComponents";
+import LatexPDF from "../pages/LatexPDF";
+import Navbar from "./Navbar";
+import ResumeComponents from "../pages/create-pages/ResumeComponents";
 
 const LayoutCreate = () => {
   return (

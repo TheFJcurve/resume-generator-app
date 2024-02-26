@@ -1,4 +1,4 @@
-import { Education } from "../services/resumeService";
+import { Education } from "../resumeService";
 
 const useLatexEducation = (education: Education[]) => {
     let latexEducation = `\\header{\\textbf{Education}} \n`;

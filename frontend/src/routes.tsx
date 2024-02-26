@@ -1,17 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import CertificationsPage from "./components/CertificationsPage";
-import EducationPage from "./components/EducationPage";
-import ErrorPage from "./components/ErrorPage";
-import ExperiencePage from "./components/ExperiencePage";
-import HeadingPage from "./components/HeadingPage";
-import ProjectPage from "./components/ProjectPage";
-import ResumeDetails from "./components/ResumeDetails";
-import ResumeList from "./components/ResumeList";
-import ResumeName from "./components/ResumeName";
-import SkillsPage from "./components/SkillsPage";
-import Home from "./design/Home";
-import LayoutCreate from "./design/LayoutCreate";
-import LayoutEdit from "./design/LayoutEdit";
+import CertificationsPage from "./components/pages/create-pages/specific-pages/CertificationsPage";
+import EducationPage from "./components/pages/create-pages/specific-pages/EducationPage";
+import ErrorPage from "./components/design/ErrorPage";
+import ExperiencePage from "./components/pages/create-pages/specific-pages/ExperiencePage";
+import HeadingPage from "./components/pages/create-pages/specific-pages/HeadingPage";
+import ProjectPage from "./components/pages/create-pages/specific-pages/ProjectPage";
+import ResumeDetails from "./components/pages/edit-pages/ResumeDetails";
+import ResumeList from "./components/pages/edit-pages/ResumeList";
+import ResumeName from "./components/pages/create-pages/specific-pages/ResumeName";
+import SkillsPage from "./components/pages/create-pages/specific-pages/SkillsPage";
+import Home from "./components/design/Home";
+import LayoutCreate from "./components/design/LayoutCreate";
+import LayoutEdit from "./components/design/LayoutEdit";
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import GenericPage from "./GenericPage";
+import GenericPage from "../GenericPage";
 
 const CertificationsPage = () => {
   const title = "Resume Certifications";

@@ -10,7 +10,7 @@ import {
 import _get from "lodash/get";
 import { useEffect, useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
-import useResume from "../hooks/useResume";
+import useResume from "../../../hooks/useResume";
 import GenericDescriptionField from "./GenericDescriptionField";
 import GenericField from "./GenericField";
 import ImportComponent from "./ImportComponent";

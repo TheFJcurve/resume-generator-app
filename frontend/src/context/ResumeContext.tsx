@@ -8,7 +8,7 @@ import {
   Project,
   Skill,
 } from "../services/resumeService";
-import useLatex from "../latex/useLatex";
+import useLatex from "../services/latex/useLatex";
 
 export type ResumeType = {
   name: string;

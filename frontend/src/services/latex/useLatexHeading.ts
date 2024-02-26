@@ -1,4 +1,4 @@
-import { Heading } from "../services/resumeService"
+import { Heading } from "../resumeService"
 
 const useLatexHeading = (heading: Heading) => {
     let latexHeading = `\\vspace*{-10pt}

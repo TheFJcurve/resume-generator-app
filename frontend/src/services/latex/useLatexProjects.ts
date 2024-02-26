@@ -1,4 +1,4 @@
-import { Project } from "../services/resumeService"
+import { Project } from "../resumeService"
 
 const useLatexProjects = (projects: Project[]) => {
   let latexProjects = `\\header{\\textbf{Projects}} \n`;

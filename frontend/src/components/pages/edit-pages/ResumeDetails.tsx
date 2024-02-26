@@ -2,8 +2,8 @@ import { Box, Divider, GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useResume from "../hooks/getResume";
-import usePDF from "../hooks/usePDF";
+import useResume from "../../../hooks/getResume";
+import usePDF from "../../../hooks/usePDF";
 
 const ResumeDetails = () => {
   const { id } = useParams();

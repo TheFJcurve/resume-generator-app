@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import usePDF from "../hooks/usePDF";
-import useResume from "../hooks/useResume";
+import usePDF from "../../hooks/usePDF";
+import useResume from "../../hooks/useResume";
 
 const LatexPDF = () => {
   const { resume } = useResume();

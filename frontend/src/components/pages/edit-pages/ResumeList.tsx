@@ -1,5 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import getResumes from "../hooks/getResumes";
+import getResumes from "../../../hooks/getResumes";
 import ResumeCard from "./ResumeCard";
 import ResumeCardSkeleton from "./ResumeCardSkeleton";
 import ResumeContainer from "./ResumeContainer";
@@ -7,7 +7,6 @@ import ResumeContainer from "./ResumeContainer";
 const ResumeList = () => {
   const { data, error, isLoading } = getResumes();
   const skeletons = [1, 2];
-
 
   if (error) return <Text>{error.message}</Text>;
 

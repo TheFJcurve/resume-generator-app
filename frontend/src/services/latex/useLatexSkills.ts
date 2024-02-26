@@ -1,4 +1,4 @@
-import { Skill } from "../services/resumeService"
+import { Skill } from "../resumeService"
 
 const useLatexSkills = (skills: Skill[]) => {
     let latexSkills = `\\header{\\textbf{Skills}} \n`;

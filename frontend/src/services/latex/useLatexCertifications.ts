@@ -1,4 +1,4 @@
-import { Certification } from "../services/resumeService"
+import { Certification } from "../resumeService"
 
 const useLatexCertifications = (certifications: Certification[]) => {
     let latexCertifications = `\\header{\\textbf{Certifications}} \n`;

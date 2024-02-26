@@ -1,6 +1,6 @@
 import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 
 const LayoutEdit = () => {
   return (

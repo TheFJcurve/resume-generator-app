@@ -1,5 +1,5 @@
 import _get from "lodash/get";
-import { ResumeType } from "../context/ResumeContext";
+import { ResumeType } from "../../context/ResumeContext";
 import useLatexComponent from "./useLatexComponent";
 import useLatexHeading from "./useLatexHeading";
 

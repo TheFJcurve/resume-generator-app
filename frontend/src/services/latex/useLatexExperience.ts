@@ -1,4 +1,4 @@
-import { Experience } from "../services/resumeService"
+import { Experience } from "../resumeService"
 
 const useLatexExperience = (experience: Experience[]) => {
     let latexExperience = `\\header{\\textbf{Experience}} \n`;

@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import sampleresume from "../assets/sampleResumes.png";
+import sampleresume from "../../assets/sampleResumes.png";
 import { Link } from "react-router-dom";
 
 const Home = () => {
