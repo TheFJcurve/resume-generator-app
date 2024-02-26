@@ -9,7 +9,12 @@ export default defineConfig({
       usePolling: true,
     },
     host: true,
-    strictPort: true,
-    port: 5173,
-  }
+    proxy: {
+      '/api': {
+        target: 'http://backend:4000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
 })

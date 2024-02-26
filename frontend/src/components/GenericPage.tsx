@@ -132,7 +132,11 @@ const GenericPage = ({
       "../" +
         _get(
           pageLinks,
-          order ? order[order.indexOf(componentName) + 1] : "name"
+          order
+            ? order.indexOf(componentName) + 1 == order.length
+              ? "name"
+              : order[order.indexOf(componentName) + 1]
+            : "name"
         )
     );
   };
