@@ -12,6 +12,3 @@ services:
     build: ./backend
     ports:
       - 4000:4000
-    environment:
-      MONGO_URI: mongodb+srv://ss2bhatt:46Yb92sXyJVkWqRq@resume-generator.xtbncza.mongodb.net/?retryWrites=true&w=majority
-      PORT: 4000
