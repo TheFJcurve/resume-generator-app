@@ -11,6 +11,7 @@ const allowedOrigins = [
   "http://localhost:80",
   "http://localhost:5173",
   "https://resume-generator-app-red.vercel.app",
+  "https://resume-generator-app.onrender.com",
 ];
 
 app.use(

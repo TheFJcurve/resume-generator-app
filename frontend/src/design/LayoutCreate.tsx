@@ -2,7 +2,6 @@ import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import LatexPDF from "../components/LatexPDF";
 import Navbar from "../components/Navbar";
 import ResumeComponents from "../components/ResumeComponents";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const LayoutCreate = () => {
   return (
@@ -18,7 +17,6 @@ const LayoutCreate = () => {
           <LatexPDF />
         </GridItem>
       </SimpleGrid>
-      <SpeedInsights />
     </SimpleGrid>
   );
 };
