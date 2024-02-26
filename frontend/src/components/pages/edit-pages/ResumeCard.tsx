@@ -12,7 +12,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useResumeRemove from "../../../hooks/deleteResumes";
 import { Resume } from "../../../services/resumeService";
 import useResume from "../../../hooks/useResume";
@@ -26,6 +26,8 @@ const ResumeCard = ({ resume }: Props) => {
   const onDelete = (id: string) => {
     useResumeRemove({ id });
   };
+  const navigate = useNavigate();
+
   const fetchAndUse = (resume: Resume) => {
     console.log(resume);
     dispatch({
@@ -64,6 +66,7 @@ const ResumeCard = ({ resume }: Props) => {
         font: resume.font ? resume.font : "lmodern",
       },
     });
+    navigate("/resume/create/name");
   };
 
   return (
@@ -80,11 +83,9 @@ const ResumeCard = ({ resume }: Props) => {
             <Heading size={"md"}>{resume.name}</Heading>
           </Link>
           <Box>
-            <Link to={"/resume/create"}>
-              <Button colorScheme="teal" onClick={() => fetchAndUse(resume)}>
-                Use
-              </Button>
-            </Link>
+            <Button colorScheme="teal" onClick={() => fetchAndUse(resume)}>
+              Use
+            </Button>
             <IconButton
               onClick={() => onDelete(resume._id)}
               aria-label="delete"
