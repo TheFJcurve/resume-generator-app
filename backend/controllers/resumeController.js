@@ -6,7 +6,7 @@ const path = require("path");
 const latex = require("node-latex");
 
 // get ALL Resumes
-const getAllResumes = async (req, res) => {
+const getAllResumes = async (_, res) => {
   const resumes = await Resume.find({}).sort({ createdAt: -1 });
   if (!resumes) {
     return res.status(404).json({ error: "Resumes not found" });
