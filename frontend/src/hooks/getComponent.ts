@@ -1,5 +1,5 @@
 import { Certification, Education, Experience, Heading, Project, Skill } from "../services/resumeService";
-import useResume from "./useResume";
+import useResume from "../context/useResume";
 
 interface Props {
     componentName: string;

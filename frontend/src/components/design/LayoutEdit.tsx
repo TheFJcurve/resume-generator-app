@@ -8,6 +8,7 @@ const LayoutEdit = () => {
       columns={{ sm: 1, md: 2 }}
       gap={3}
       templateAreas={`"header header" "main main"`}
+      height={"100vh"}
     >
       <GridItem area={"header"}>
         <Navbar />

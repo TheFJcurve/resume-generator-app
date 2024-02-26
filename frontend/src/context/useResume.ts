@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { ResumeContext } from "../context/ResumeContext";
+import { ResumeContext } from "./ResumeContext";
 
-// Define a custom hook to access the context value
 const useResume = () => {
     const context = useContext(ResumeContext);
 

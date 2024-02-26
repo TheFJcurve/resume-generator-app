@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <Box height={"950px"} marginTop={8}>
+    <Box height={"100vh"} marginTop={8}>
       <SimpleGrid columns={{ sm: 1, md: 2 }}>
         <VStack
           gap={3}

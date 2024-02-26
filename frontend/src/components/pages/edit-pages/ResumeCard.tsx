@@ -15,7 +15,7 @@ import { formatDistanceToNow } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import stockresume from "../../../assets/stock-resume.png";
 import useResumeRemove from "../../../hooks/deleteResumes";
-import useResume from "../../../hooks/useResume";
+import useResume from "../../../context/useResume";
 import { Resume } from "../../../services/resumeService";
 
 interface Props {

@@ -5,7 +5,7 @@ import ResumeComponents from "../pages/create-pages/ResumeComponents";
 
 const LayoutCreate = () => {
   return (
-    <SimpleGrid columns={1} gap={5}>
+    <SimpleGrid columns={1} gap={5} height={"100vh"}>
       <GridItem>
         <Navbar />
       </GridItem>

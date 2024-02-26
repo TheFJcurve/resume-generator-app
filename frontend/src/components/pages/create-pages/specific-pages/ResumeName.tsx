@@ -8,7 +8,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { Form, useNavigate } from "react-router-dom";
-import useResume from "../../../../hooks/useResume";
+import useResume from "../../../../context/useResume";
 
 const ResumeName = () => {
   const { resume, dispatch } = useResume();

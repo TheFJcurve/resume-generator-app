@@ -7,7 +7,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import useResume from "../../../hooks/useResume";
+import useResume from "../../../context/useResume";
 import _get from "lodash/get";
 
 interface Props {

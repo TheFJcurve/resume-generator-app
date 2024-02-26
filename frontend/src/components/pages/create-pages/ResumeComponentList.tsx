@@ -13,7 +13,7 @@ import _get from "lodash/get";
 import { useEffect, useState } from "react";
 import { MdDragIndicator } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
-import useResume from "../../../hooks/useResume";
+import useResume from "../../../context/useResume";
 import resumeService from "../../../services/resumeService";
 
 const componentUrls = {

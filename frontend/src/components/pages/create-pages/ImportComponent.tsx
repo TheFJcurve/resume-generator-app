@@ -1,7 +1,7 @@
 import { Select } from "@chakra-ui/react";
 import _get from "lodash/get";
 import getResumes from "../../../hooks/getResumes";
-import useResume from "../../../hooks/useResume";
+import useResume from "../../../context/useResume";
 
 interface Props {
   componentName: string;
