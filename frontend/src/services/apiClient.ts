@@ -2,7 +2,7 @@ class APIClient<T> {
     endpoint: string;
 
     constructor(endpoint: string) {
-        this.endpoint = endpoint;
+        this.endpoint = "https://resume-generator-app-backend-3.onrender.com" + endpoint;
     }
 
     getAll = () => {

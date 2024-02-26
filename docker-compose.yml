@@ -1,14 +1,8 @@
 version: '3.8'
 
 services:
-  frontend:
-    depends_on:
-      - backend
-    build: ./frontend
-    ports:
-      - 80:5173
-    
   backend:
+    platform: linux/amd64
     build: ./backend
     ports:
       - 4000:4000
