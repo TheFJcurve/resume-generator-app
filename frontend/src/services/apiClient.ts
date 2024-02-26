@@ -1,8 +1,11 @@
+import { ResumeType } from "../context/ResumeContext";
+
 class APIClient<T> {
     endpoint: string;
+    baseUrl: string = "https://resume-generator-app-backend-3.onrender.com";
 
     constructor(endpoint: string) {
-        this.endpoint = "https://resume-generator-app-backend-3.onrender.com" + endpoint;
+        this.endpoint = this.baseUrl + endpoint;
     }
 
     getAll = () => {
@@ -37,6 +40,16 @@ class APIClient<T> {
             },
             body: JSON.stringify({ latexCode, name }),
         }).then((res) => res.blob());
+    }
+
+    uploadResume = (resume: ResumeType | undefined) => {
+        return fetch(this.baseUrl + "/api/resumes", {
+            method: "POST",
+            body: JSON.stringify(resume),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
     }
 }
 
