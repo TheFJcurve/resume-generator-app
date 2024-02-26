@@ -55,7 +55,10 @@ latexFile += `% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
         latexFile += `\\begin{center} Thank you for using Resume Generator \\\\ \\textcopyright \\; Sargun Singh Bhatti, 2024 \\end{center}`
     }
     latexFile += `\\end{document}`;
+
     return latexFile;
 }
+
+
 
 export default useLatex

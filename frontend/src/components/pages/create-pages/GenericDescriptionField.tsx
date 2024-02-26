@@ -4,11 +4,11 @@ import {
   FormLabel,
   HStack,
   IconButton,
-  Input,
+  Textarea,
 } from "@chakra-ui/react";
+import _get from "lodash/get";
 import { useEffect, useState } from "react";
 import useResume from "../../../context/useResume";
-import _get from "lodash/get";
 
 interface Props {
   component: string;
@@ -65,7 +65,7 @@ const GenericDescriptionField = ({
         (_, descriptionNumber) => descriptionNumber
       ).map((descriptionNumber) => (
         <HStack key={index + descriptionNumber} marginTop={3}>
-          <Input
+          <Textarea
             name={`${name}[${descriptionNumber}]`}
             placeholder={placeHolderValues[descriptionNumber]}
             defaultValue={defaultValue ? defaultValue[descriptionNumber] : ""}
