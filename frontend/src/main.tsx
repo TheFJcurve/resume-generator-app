@@ -4,11 +4,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools/production";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
+import { ResumeContextProvider } from "./context/ResumeContext.tsx";
 import "./index.css";
 import router from "./routes.tsx";
 import theme from "./theme.ts";
-import { ResumeContextProvider } from "./context/ResumeContext.tsx";
-import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 const defaultResume = {
   name: "",
