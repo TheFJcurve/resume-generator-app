@@ -1,16 +1,18 @@
 import {
   Button,
+  HStack,
   IconButton,
   Table,
   TableContainer,
   Tbody,
   Td,
+  Text,
   Tr,
 } from "@chakra-ui/react";
 import _get from "lodash/get";
 import { useEffect, useState } from "react";
 import { MdDragIndicator } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useResume from "../../../hooks/useResume";
 import resumeService from "../../../services/resumeService";
 
@@ -38,15 +40,14 @@ const ResumeComponentList = () => {
   const { resume, dispatch } = useResume();
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   let localOrder = resume?.order || [];
+  const location = useLocation();
 
   useEffect(() => {
     localOrder = resume?.order || [];
   }, [resume?.order]);
 
   const postResume = async () => {
-    console.log(resume);
     const response = await resumeService.uploadResume(resume);
-
     const json = await response.json();
 
     if (!response.ok) {
@@ -112,20 +113,30 @@ const ResumeComponentList = () => {
               onDragEnd={handleDragEnd}
             >
               <Td>
-                {_get(componentUrls, component) !== "./name" &&
-                _get(componentUrls, component) !== "./heading" ? (
-                  <IconButton
-                    aria-label="button"
-                    type="button"
-                    icon={<MdDragIndicator style={{ cursor: "grab" }} />}
-                    variant={"ghost"}
-                    color={"teal.300"}
-                    marginRight={5}
-                  />
-                ) : null}
-                <Link to={_get(componentUrls, component)}>
-                  {_get(componentDisplayName, component)}
-                </Link>
+                <HStack>
+                  {_get(componentUrls, component) !== "./name" &&
+                  _get(componentUrls, component) !== "./heading" ? (
+                    <IconButton
+                      aria-label="button"
+                      type="button"
+                      icon={<MdDragIndicator style={{ cursor: "grab" }} />}
+                      variant={"ghost"}
+                      color={"teal.300"}
+                      marginRight={5}
+                    />
+                  ) : null}
+                  <NavLink to={_get(componentUrls, component)}>
+                    <Text
+                      color={
+                        location.pathname.endsWith(component)
+                          ? "teal.300"
+                          : "white"
+                      }
+                    >
+                      {_get(componentDisplayName, component)}
+                    </Text>
+                  </NavLink>
+                </HStack>
               </Td>
             </Tr>
           ))}

@@ -13,10 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
-import useResumeRemove from "../../../hooks/deleteResumes";
-import { Resume } from "../../../services/resumeService";
-import useResume from "../../../hooks/useResume";
 import stockresume from "../../../assets/stock-resume.png";
+import useResumeRemove from "../../../hooks/deleteResumes";
+import useResume from "../../../hooks/useResume";
+import { Resume } from "../../../services/resumeService";
 
 interface Props {
   resume: Resume;
