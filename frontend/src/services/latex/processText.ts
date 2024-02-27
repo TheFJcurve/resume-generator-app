@@ -6,7 +6,6 @@ const processText = (latexInput: string) => {
     errorTerms.forEach((term) => {
         processedText = processedText.replace(term, `\\${term}`)
     })
-    console.log(processedText)
     return processedText
 }
 
