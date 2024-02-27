@@ -1,19 +1,31 @@
 import { Experience } from "../resumeService"
+import processText from "./processText";
 
 const useLatexExperience = (experience: Experience[]) => {
     let latexExperience = `\\header{\\textbf{Experience}} \n`;
     const len = experience.length;
     for (let i = 0; i < len; i++) {
-      latexExperience += `\\textbf{${experience[i].company}} \\hfill ${experience[i].startDate}`
-      if (experience[i].endDate) latexExperience += ` - ${experience[i].endDate}`
+      const experienceCompany = processText(experience[i].company) 
+      const experiencePosition = processText(experience[i].position)
+      const experienceStartDate = processText(experience[i].startDate)
+      
+      latexExperience += `\\textbf{${experienceCompany}} \\hfill ${experienceStartDate}`
+      if (experience[i].endDate) {
+        const experienceEndDate = processText(experience[i].endDate as string)
+        latexExperience += ` - ${experienceEndDate}`
+      }
       latexExperience += `\\\\ \n`
-      latexExperience += `\\textit{${experience[i].position}}`
-      if (experience[i].location) latexExperience += `\\hfill ${experience[i].location}`
+      latexExperience += `\\textit{${experiencePosition}}`
+      if (experience[i].location) {
+        const experienceLocation = processText(experience[i].location as string)
+        latexExperience += `\\hfill ${experienceLocation}`
+      }
       latexExperience += `\\\\ \n`
       latexExperience += `\\begin{itemize} \\itemsep 0pt \n`
-      const descroptionLength = experience[i].description?.length;
-      for (let j = 0; j < descroptionLength; j++) {
-        latexExperience += `\\item{${experience[i].description[j]}} \n`
+      const descriptionLength = experience[i].description?.length;
+      for (let j = 0; j < descriptionLength; j++) {
+        const description = processText(experience[i].description[j])
+        latexExperience += `\\item{${description}} \n`
       }
       latexExperience += `\\end{itemize} \n`
     }
