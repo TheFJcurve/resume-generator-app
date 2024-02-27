@@ -14,8 +14,8 @@ import {
 import { formatDistanceToNow } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import stockresume from "../../../assets/stock-resume.png";
-import useResumeRemove from "../../../hooks/deleteResumes";
 import useResume from "../../../context/useResume";
+import useResumeRemove from "../../../hooks/deleteResumes";
 import { Resume } from "../../../services/resumeService";
 
 interface Props {
@@ -70,7 +70,11 @@ const ResumeCard = ({ resume }: Props) => {
   };
 
   return (
-    <Card>
+    <Card
+      borderRadius={20}
+      _hover={{ transform: "scale(1.02)" }}
+      transition={"all 0.3s ease-in-out"}
+    >
       <Image
         src={stockresume}
         alt="A Stock Resume"
