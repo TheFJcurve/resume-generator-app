@@ -8,7 +8,7 @@ Using MERN Stack and Bash Scripting, alongside some basic LaTeX, I wish to make 
 
 Front-end online at: https://resume-generator-app.onrender.com
 
-Back-end online at: https://resume-generator-app-backend-3.onrender.com
+Back-end online at: https://oyster-app-3sbd2.ondigitalocean.app/
 
 Back-end docker image: https://hub.docker.com/repository/docker/thefjcurve/resume-generator-app-backend/general
 
