@@ -190,13 +190,7 @@ const GenericPage = ({
                 <HStack>
                   <IconButton
                     style={{ marginRight: "auto" }}
-                    onClick={() => {
-                      const newResumeComponent: typeof resumeComponent =
-                        Array.isArray(resumeComponent)
-                          ? resumeComponent.splice(componentNumber, 1)
-                          : [];
-                      setResumeComponent(newResumeComponent)
-                    }}
+                    onClick={() => setComponentCount(componentCount - 1)}
                     colorScheme="red"
                     marginTop={3}
                     icon={<DeleteIcon />}
