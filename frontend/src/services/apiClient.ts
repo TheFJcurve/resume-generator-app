@@ -2,7 +2,7 @@ import { ResumeType } from "../context/ResumeContext";
 
 class APIClient<T> {
     endpoint: string;
-    baseUrl: string = "https://resume-generator-app-backend-3.onrender.com";
+    baseUrl: string = "https://oyster-app-3sbd2.ondigitalocean.app";
 
     constructor(endpoint: string) {
         this.endpoint = this.baseUrl + endpoint;
