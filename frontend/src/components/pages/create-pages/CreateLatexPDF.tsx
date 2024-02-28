@@ -36,7 +36,7 @@ const CreateLatexPDF = () => {
   }, [resume?.latexCode]);
 
   return (
-    <SimpleGrid justifyItems={"center"} gap={2}>
+    <SimpleGrid justifyItems={"center"} gap={2} width={"100%"}>
       <HStack>
         <Button onClick={onButtonClickPDF} colorScheme="teal">
           Download PDF

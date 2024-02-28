@@ -4,7 +4,7 @@ import ResumeComponentList from "./ResumeComponentList";
 
 const ResumeComponents = () => {
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={3} gap={5}>
+    <SimpleGrid columns={{ sm: 1, md: 2 }} margin={5} gap={5}>
       <GridItem>
         <ResumeComponentList />
       </GridItem>

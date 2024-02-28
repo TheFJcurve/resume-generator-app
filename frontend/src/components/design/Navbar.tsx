@@ -1,21 +1,19 @@
 import { Image } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
-    <Link to={"/"}>
-      <Image
-        style={{
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "40%",
-        }}
-        width={"300px"}
-        src={logo}
-      />
-    </Link>
+    <Image
+      display={"block"}
+      marginLeft={"auto"}
+      marginRight={"auto"}
+      width={"40%"}
+      src={logo}
+      onClick={() => navigate("/")}
+      _hover={{ cursor: "pointer" }}
+    />
   );
 };
 

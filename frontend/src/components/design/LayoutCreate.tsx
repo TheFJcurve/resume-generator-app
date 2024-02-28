@@ -5,18 +5,26 @@ import CreateLatexPDF from "../pages/create-pages/CreateLatexPDF";
 
 const LayoutCreate = () => {
   return (
-    <SimpleGrid columns={1} gap={5} minHeight={"100vh"} height={"100%"}>
+    <SimpleGrid
+      gap={5}
+      minWidth={"100vw"}
+      width={"100%"}
+      minHeight={"100vh"}
+      height={"100%"}
+    >
       <GridItem>
         <Navbar />
       </GridItem>
-      <SimpleGrid columns={{ sm: 1, lg: 2 }} marginLeft={3}>
-        <GridItem width={"100%"} marginRight={5} marginBottom={4}>
-          <ResumeComponents />
-        </GridItem>
-        <GridItem width={{ sm: "400px", md: "800px", lg: "600px" }}>
-          <CreateLatexPDF />
-        </GridItem>
-      </SimpleGrid>
+      <GridItem>
+        <SimpleGrid columns={{ sm: 1, lg: 2 }} marginLeft={3}>
+          <GridItem width={"100%"} marginRight={5} marginBottom={4}>
+            <ResumeComponents />
+          </GridItem>
+          <GridItem>
+            <CreateLatexPDF />
+          </GridItem>
+        </SimpleGrid>
+      </GridItem>
     </SimpleGrid>
   );
 };

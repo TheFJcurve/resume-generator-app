@@ -84,7 +84,9 @@ const ResumeCard = ({ resume }: Props) => {
       <CardBody>
         <HStack justifyContent={"space-between"}>
           <Link to={resume._id ? resume._id : "."}>
-            <Heading size={"md"}>{resume.name}</Heading>
+            <Heading size={"md"} _hover={{ color: "teal.300" }}>
+              {resume.name}
+            </Heading>
           </Link>
           <Box>
             <Button colorScheme="teal" onClick={() => fetchAndUse(resume)}>

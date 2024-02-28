@@ -3,16 +3,15 @@ import {
   Button,
   Divider,
   GridItem,
-  HStack,
   Heading,
-  SimpleGrid,
+  SimpleGrid
 } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import blankPdf from "../../../assets/blank-pdf.pdf";
 import useResume from "../../../hooks/getResume";
 import usePDF from "../../../hooks/usePDF";
-import blankPdf from "../../../assets/blank-pdf.pdf";
 
 const ResumeDetails = () => {
   const { id } = useParams();
@@ -59,8 +58,8 @@ const ResumeDetails = () => {
   if (resume === undefined) return null;
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} gap={10}>
-      <GridItem width={"700px"} marginLeft={10}>
+    <SimpleGrid columns={{ sm: 1, xl: 2 }} gap={2}>
+      <GridItem width={"100%"} padding={10} marginLeft={4} marginRight={4}>
         <Box padding={1}>
           <Heading>Resume Details</Heading>
           <p>Resume ID: {resume._id}</p>
@@ -71,7 +70,7 @@ const ResumeDetails = () => {
         {resume.heading && (
           <Box padding={1}>
             <Heading size={"md"}>Heading</Heading>
-            <SimpleGrid columns={2} gap={3}>
+            <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3}>
               <p>Full Name: {resume.heading.fullName}</p>
 
               <p>Email: {resume.heading.email}</p>
@@ -95,7 +94,7 @@ const ResumeDetails = () => {
             <Heading size={"md"}>Education</Heading>
             {resume.education?.map((e) => (
               <Box key={e.institute} padding={1}>
-                <SimpleGrid columns={2} gap={3}>
+                <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3}>
                   <p>Institute: {e.institute}</p>
 
                   <p>Degree: {e.degree}</p>
@@ -122,7 +121,7 @@ const ResumeDetails = () => {
 
             {resume.experience?.map((e) => (
               <Box key={e.company} padding={1}>
-                <SimpleGrid columns={2} gap={3}>
+                <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3}>
                   <p>Company: {e.company}</p>
 
                   <p>Position: {e.position}</p>
@@ -137,7 +136,15 @@ const ResumeDetails = () => {
                     <>
                       Job Descrtiption:{" "}
                       {e.description.map((v, index) => (
-                        <p key={index}>{v}</p>
+                        <p
+                          style={{
+                            wordWrap: "break-word",
+                            overflowWrap: "break-word",
+                          }}
+                          key={index}
+                        >
+                          {v}
+                        </p>
                       ))}
                     </>
                   )}
@@ -153,7 +160,7 @@ const ResumeDetails = () => {
             <Heading size={"md"}>Projects</Heading>
             {resume.projects?.map((e) => (
               <Box key={e.projectName} padding={1}>
-                <SimpleGrid columns={2} gap={3}>
+                <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3}>
                   <p>Project Name: {e.projectName}</p>
 
                   <p>Project Link: {e.projectLink}</p>
@@ -165,7 +172,15 @@ const ResumeDetails = () => {
                   <>
                     Project Description:{" "}
                     {e.description.map((v, index) => (
-                      <p key={index}>{v}</p>
+                      <p
+                        style={{
+                          wordWrap: "break-word",
+                          overflowWrap: "break-word",
+                        }}
+                        key={index}
+                      >
+                        {v}
+                      </p>
                     ))}
                   </>
                 </SimpleGrid>
@@ -180,7 +195,7 @@ const ResumeDetails = () => {
             <Heading size={"md"}>Skills</Heading>
             {resume.skills?.map((e) => (
               <Box key={e.skillHeading} padding={1}>
-                <SimpleGrid columns={2} gap={3}>
+                <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3}>
                   <p>
                     {e.skillHeading}: {e.skill}
                   </p>
@@ -196,12 +211,20 @@ const ResumeDetails = () => {
             <Heading size={"md"}>Certifications</Heading>
             {resume.certifications?.map((e) => (
               <Box key={e.name} padding={1}>
-                <SimpleGrid columns={2} gap={3}>
+                <SimpleGrid columns={{ sm: 1, md: 2 }} gap={3}>
                   <p>Certificate Name: {e.name}</p>
                   <>
                     Certificate Description:{" "}
                     {e.description.map((v, index) => (
-                      <p key={index}>{v}</p>
+                      <p
+                        style={{
+                          wordWrap: "break-word",
+                          overflowWrap: "break-word",
+                        }}
+                        key={index}
+                      >
+                        {v}
+                      </p>
                     ))}
                   </>
                 </SimpleGrid>
@@ -219,16 +242,17 @@ const ResumeDetails = () => {
           )}
         </Heading>
       </GridItem>
-      <GridItem width={"710px"} marginLeft={10}>
+
+      <GridItem width={"100%"}>
         <SimpleGrid justifyItems={"center"} gap={2}>
-          <HStack>
+          <SimpleGrid columns={{ sm: 1, md: 2 }} gap={4}>
             <Button colorScheme={"teal"} onClick={onButtonClickPDF}>
               Download PDF
             </Button>
             <Button colorScheme={"teal"} onClick={onButtonClickLaTeX}>
               Download LaTeX Code
             </Button>
-          </HStack>
+          </SimpleGrid>
           <embed src={pdfUrl + "#toolbar=0"} width={"100%"} height={"900px"} />
         </SimpleGrid>
       </GridItem>
