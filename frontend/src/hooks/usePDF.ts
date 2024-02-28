@@ -15,7 +15,6 @@ const usePDF = async (latexCode: string | undefined, name: string) => {
         });
       return response;
     }
-    return "";
   };
 
 export default usePDF

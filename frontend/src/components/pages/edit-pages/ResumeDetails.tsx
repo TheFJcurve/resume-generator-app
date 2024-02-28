@@ -1,20 +1,52 @@
-import { Box, Divider, GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  GridItem,
+  HStack,
+  Heading,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useResume from "../../../hooks/getResume";
 import usePDF from "../../../hooks/usePDF";
+import blankPdf from "../../../assets/blank-pdf.pdf";
 
 const ResumeDetails = () => {
   const { id } = useParams();
   if (!id) throw new Error("id is required");
 
   const { data: resume, error } = useResume(id);
-  const [pdfUrl, setPdfUrl] = useState<string>("");
+
+  if (error) throw error;
+  const [pdfUrl, setPdfUrl] = useState<string>(blankPdf);
+
+  const onButtonClickPDF = () => {
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = resume?.name || "output.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const onButtonClickLaTeX = () => {
+    const link = document.createElement("a");
+    const blob = new Blob([resume?.latexCode || ""], {
+      type: "text/plain",
+    });
+    link.href = URL.createObjectURL(blob);
+    link.download = resume?.name + ".tex" || "output.tex";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const loadOnlyOnce = () => {
     usePDF(resume?.latexCode, resume?.name || "").then((response) => {
-      setPdfUrl(response);
+      setPdfUrl(response || blankPdf);
     });
   };
 
@@ -187,8 +219,18 @@ const ResumeDetails = () => {
           )}
         </Heading>
       </GridItem>
-      <GridItem width={"710px"}>
-        <iframe src={pdfUrl} width={"120%"} height={"900px"} />
+      <GridItem width={"710px"} marginLeft={10}>
+        <SimpleGrid justifyItems={"center"} gap={2}>
+          <HStack>
+            <Button colorScheme={"teal"} onClick={onButtonClickPDF}>
+              Download PDF
+            </Button>
+            <Button colorScheme={"teal"} onClick={onButtonClickLaTeX}>
+              Download LaTeX Code
+            </Button>
+          </HStack>
+          <embed src={pdfUrl + "#toolbar=0"} width={"100%"} height={"900px"} />
+        </SimpleGrid>
       </GridItem>
     </SimpleGrid>
   );
