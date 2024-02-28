@@ -45,7 +45,7 @@ const CreateLatexPDF = () => {
           Download LaTeX Code
         </Button>
       </HStack>
-      <embed src={pdfUrl + "#toolbar=0"} width={"100%"} height={"850px"} />
+      <iframe src={pdfUrl + "#toolbar=0"} width={"100%"} height={"850px"} />
     </SimpleGrid>
   );
 };
