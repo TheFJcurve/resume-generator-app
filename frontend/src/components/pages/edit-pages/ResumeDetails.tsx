@@ -4,7 +4,7 @@ import {
   Divider,
   GridItem,
   Heading,
-  SimpleGrid
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
@@ -47,6 +47,18 @@ const ResumeDetails = () => {
     usePDF(resume?.latexCode, resume?.name || "").then((response) => {
       setPdfUrl(response || blankPdf);
     });
+  };
+
+  const onButtonClickJSON = () => {
+    const link = document.createElement("a");
+    const blob = new Blob([JSON.stringify(resume, null, 2)], {
+      type: "application/json",
+    });
+    link.href = URL.createObjectURL(blob);
+    link.download = resume?.name + ".json" || "output.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   useEffect(() => {
@@ -245,15 +257,23 @@ const ResumeDetails = () => {
 
       <GridItem width={"100%"}>
         <SimpleGrid justifyItems={"center"} gap={2}>
-          <SimpleGrid columns={{ sm: 1, md: 2 }} gap={4}>
+          <SimpleGrid
+            columns={{ sm: 1, md: 3 }}
+            gap={3}
+            width={"100%"}
+            padding={2}
+          >
             <Button colorScheme={"teal"} onClick={onButtonClickPDF}>
               Download PDF
             </Button>
             <Button colorScheme={"teal"} onClick={onButtonClickLaTeX}>
               Download LaTeX Code
             </Button>
+            <Button colorScheme={"teal"} onClick={onButtonClickJSON}>
+              Download JSON
+            </Button>
           </SimpleGrid>
-          <embed src={pdfUrl + "#toolbar=0"} width={"100%"} height={"900px"} />
+          <iframe src={pdfUrl + "#toolbar=0"} width={"100%"} height={"900px"} />
         </SimpleGrid>
       </GridItem>
     </SimpleGrid>
