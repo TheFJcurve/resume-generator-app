@@ -3,8 +3,8 @@ const cors = require("cors");
 require("dotenv").config();
 const resumeRoutes = require("./resumes");
 const path = require("path");
-
 const app = express();
+
 app.use(express.json());
 
 const allowedOrigins = [
@@ -18,6 +18,9 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
