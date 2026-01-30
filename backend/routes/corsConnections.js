@@ -10,6 +10,7 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:80",
   "http://localhost:5173",
+  "https://resume.sargun.ca",
   "https://resume-generator-app-red.vercel.app",
   "https://resume-generator-app.onrender.com",
 ];
